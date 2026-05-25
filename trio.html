@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="assets/styles.css" />
   </head>
   <body>
+    <div id="page-veil" aria-hidden="true"></div>
     <div class="ambient ambient-a" aria-hidden="true"></div>
     <div class="ambient ambient-b" aria-hidden="true"></div>
 
@@ -32,18 +33,21 @@
 
     <main>
       <section class="section">
-        <div class="section-head">
-          <h2 data-i18n="trioTitle">Das Trio</h2>
-        </div>
-        <div class="panel prose">
-          <p data-i18n="trioP1"></p>
-          <p data-i18n="trioP2"></p>
-          <ul>
-            <li>Juan-Esteban Rendon &ndash; Violine</li>
-            <li>Camilo Chaparro &ndash; Violoncello</li>
-            <li>Maria Shykyrinska &ndash; Klavier</li>
-          </ul>
-          <p data-i18n="trioP3"></p>
+        <div class="panel trio-layout">
+          <div class="prose">
+            <ul class="trio-members">
+              <li data-i18n="trioMember1">Juan-Esteban Rendón – Violine</li>
+              <li data-i18n="trioMember2">Camilo Chaparro – Violoncello</li>
+              <li data-i18n="trioMember3">Maria Shykyrinska – Klavier</li>
+            </ul>
+            <p><span data-i18n="trioP1a"></span> <span class="ensemble-name">Synergia Piano Trio</span> <span data-i18n="trioP1b"></span></p>
+            <p><span data-i18n="trioP2a"></span> <span class="school-name">Hochschule f&uuml;r Musik Hanns Eisler Berlin</span><span data-i18n="trioP2b"></span></p>
+            <p><span data-i18n="trioP3a"></span> <span class="konzerthaus-name">Konzerthaus Berlin</span><span data-i18n="trioP3b"></span></p>
+            <p data-i18n="trioP4"></p>
+          </div>
+          <div class="trio-photo">
+            <img src="assets/Synergia_Piano_Trio-48.png" alt="Synergia Piano Trio" loading="lazy" />
+          </div>
         </div>
       </section>
     </main>

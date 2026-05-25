@@ -2,11 +2,11 @@
   --bg: #ece8df;
   --ink: #0f0f10;
   --muted: #4a4a4d;
-  --card: rgba(255, 255, 255, 0.76);
+  --card: rgba(255, 255, 255, 0.90);
   --line: rgba(15, 15, 16, 0.16);
   --accent: #173f33;
   --accent-soft: #d6e5df;
-  --radius: 20px;
+  --radius: 0px;
   --shadow: 0 16px 48px rgba(0, 0, 0, 0.08);
   --hero-overlay-top: rgba(0, 0, 0, 0.42);
   --hero-overlay-mid: rgba(0, 0, 0, 0.16);
@@ -26,11 +26,10 @@ body {
   margin: 0;
   font-family: "Manrope", "Segoe UI", sans-serif;
   color: var(--ink);
-  background:
-    radial-gradient(circle at 80% 20%, rgba(23, 63, 51, 0.1), transparent 32%),
-    radial-gradient(circle at 10% 65%, rgba(15, 15, 16, 0.08), transparent 28%),
-    linear-gradient(155deg, #f0ede5 0%, #e9e2d6 100%);
+  background: url("Synergia_Hintergrund.png") center center / cover no-repeat fixed;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .home-page {
@@ -50,6 +49,7 @@ body {
 }
 
 .ambient {
+  display: none;
   position: fixed;
   z-index: -1;
   width: 34vw;
@@ -94,14 +94,10 @@ body {
   grid-template-columns: 1fr auto auto;
   gap: 1rem;
   align-items: center;
-  padding: 1rem clamp(1rem, 3vw, 3rem);
-  backdrop-filter: blur(12px);
-  background: rgba(236, 232, 223, 0.82);
-  border-bottom: 1px solid var(--line);
-}
-
-.home-page .ambient {
-  display: none;
+  padding: 0.9rem clamp(1rem, 3vw, 3rem) 0.5rem;
+  backdrop-filter: blur(6px) saturate(1.2);
+  background: rgba(255, 255, 255, 0.10);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .home-page .site-header {
@@ -200,7 +196,8 @@ body {
 
 main {
   width: min(1100px, 92vw);
-  margin: 2.2rem auto 4rem;
+  margin: 2.2rem auto 2rem;
+  flex: 1;
 }
 
 .home-page main {
@@ -440,15 +437,60 @@ blockquote {
   align-items: start;
 }
 
+.trio-layout {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2rem;
+  align-items: center;
+}
+
+.trio-layout .prose > p:last-child {
+  margin-bottom: 0;
+}
+
+.trio-members {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.4rem;
+}
+
+.trio-members li + li {
+  margin-top: 0.25rem;
+}
+
+.trio-photo img {
+  display: block;
+  width: 300px;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+.school-name,
+.konzerthaus-name {
+  font-style: italic;
+}
+
+:lang(de) .school-name,
+:lang(de) .konzerthaus-name {
+  font-style: normal;
+}
+
+:lang(es) .ensemble-name {
+  font-style: italic;
+}
+
 .small {
   color: var(--muted);
   font-size: 0.9rem;
 }
 
 .site-footer {
-  padding: 2.5rem 1rem;
+  padding: 0.4rem 1rem calc(env(safe-area-inset-bottom) + 0.4rem);
   text-align: center;
   color: var(--muted);
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(6px);
+  font-size: 0.82rem;
 }
 
 .site-footer p {
@@ -511,7 +553,6 @@ blockquote {
   }
 
   .panel {
-    border-radius: 18px;
     padding: 1rem;
   }
 
@@ -560,6 +601,18 @@ blockquote {
     grid-template-columns: 1fr;
   }
 
+  .trio-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .trio-photo {
+    order: -1;
+  }
+
+  .trio-photo img {
+    width: 100%;
+  }
+
   .site-footer {
     padding: 2rem 1rem calc(env(safe-area-inset-bottom) + 1.2rem);
   }
@@ -592,6 +645,22 @@ blockquote {
   }
 }
 
+#page-veil {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #000;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease; /* fade-from-black (entrada) */
+}
+
+#page-veil.veil-in {
+  opacity: 1;
+  pointer-events: all;
+  transition: opacity 0.15s ease; /* fade-to-black (salida): muy rápido */
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -599,5 +668,9 @@ blockquote {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  #page-veil {
+    transition: none;
   }
 }
