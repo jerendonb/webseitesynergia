@@ -21,7 +21,8 @@ const translations = {
     archiveTitle: "Archiv",
     archiveLead: "Vergangene Konzerte bleiben dauerhaft sichtbar.",
     noUpcoming: "Neue Konzerttermine werden in Kurze veroffentlicht.",
-    ticketLabel: "Ticket",
+    ticketLabel: "Tickets",
+    tidalBtn: "Auf Tidal anh\u00f6ren",
     trioTitle: "Das Trio",
     trioMember1: "Juan-Esteban Rend\u00f3n \u2013 Violine",
     trioMember2: "Camilo Chaparro \u2013 Violoncello",
@@ -36,7 +37,7 @@ const translations = {
     repertoireTitle: "Repertoire",
     repertoireLead:
       "Die Repertoireliste steht als Download bereit. Programmschwerpunkte konnen flexibel fur Veranstaltungsformate abgestimmt werden.",
-    repertoireDownload: "Repertoireliste herunterladen",
+    repertoireDownload: "Vollst\u00e4ndige Repertoireliste herunterladen",
     repertoireHint: "Datei kann jederzeit durch eine finale PDF ersetzt werden.",
     mediaTitle: "Media",
     mediaLead: "Videos, Audio und Bildmaterial sind chronologisch nach Event organisiert.",
@@ -62,7 +63,8 @@ const translations = {
     pressSource: "Quelle: Rheinische Post, 27.09.2021",
     pressPolicyNote: "Aus urheberrechtlichen Grunden wird hier nur ein Auszug wiedergegeben.",
     pressFullLink: "Zur vollstandigen Kritik (extern)",
-    pressPageLink: "Zur Presseseite",
+    pressPageLink: "mehr lesen",
+    pastMembersTitle: "Hommage an fr\u00fchere Mitglieder",
     introMore: "Mehr \u00fcber das Trio",
     allConcerts: "Alle Termine",
     legalLink: "Impressum \u0026 Datenschutz",
@@ -97,6 +99,7 @@ const translations = {
     archiveLead: "Past concerts remain visible permanently.",
     noUpcoming: "New concert dates will be announced soon.",
     ticketLabel: "Tickets",
+    tidalBtn: "Listen on Tidal",
     trioTitle: "The Trio",
     trioMember1: "Juan-Esteban Rend\u00f3n \u2013 violin",
     trioMember2: "Camilo Chaparro \u2013 cello",
@@ -111,7 +114,7 @@ const translations = {
     repertoireTitle: "Repertoire",
     repertoireLead:
       "The repertoire list is available for download. Program focus can be tailored flexibly to each venue and format.",
-    repertoireDownload: "Download repertoire list",
+    repertoireDownload: "Download full repertoire list",
     repertoireHint: "This file can be replaced by a final PDF at any time.",
     mediaTitle: "Media",
     mediaLead: "Video, audio and gallery assets are organized chronologically by event.",
@@ -136,7 +139,8 @@ const translations = {
     pressSource: "Source: Rheinische Post, Sept 27, 2021",
     pressPolicyNote: "For copyright reasons, only an excerpt is shown here.",
     pressFullLink: "Read full review (external)",
-    pressPageLink: "Press page",
+    pressPageLink: "read more",
+    pastMembersTitle: "Tribute to past members",
     introMore: "More about the trio",
     allConcerts: "All concerts",
     legalLink: "Imprint \u0026 Privacy",
@@ -170,7 +174,8 @@ const translations = {
     archiveTitle: "Archivo",
     archiveLead: "Los conciertos pasados permanecen visibles.",
     noUpcoming: "Nuevas fechas seran publicadas pronto.",
-    ticketLabel: "Entradas",
+    ticketLabel: "Tickets",
+    tidalBtn: "Escuchar en Tidal",
     trioTitle: "El Tr\u00edo",
     trioMember1: "Juan Esteban Rend\u00f3n \u2013 viol\u00edn",
     trioMember2: "Camilo Chaparro \u2013 violonchelo",
@@ -185,7 +190,7 @@ const translations = {
     repertoireTitle: "Repertorio",
     repertoireLead:
       "La lista de repertorio esta disponible para descarga. La orientacion de programa puede adaptarse a cada formato y contexto.",
-    repertoireDownload: "Descargar lista de repertorio",
+    repertoireDownload: "Descargar lista de repertorio completa",
     repertoireHint: "Este archivo puede sustituirse por un PDF final en cualquier momento.",
     mediaTitle: "Media",
     mediaLead: "Video, audio y galeria visual organizados cronologicamente por evento.",
@@ -210,7 +215,8 @@ const translations = {
     pressSource: "Fuente: Rheinische Post, 27.09.2021",
     pressPolicyNote: "Por motivos de derechos de autor, aqui se muestra solo un extracto.",
     pressFullLink: "Leer critica completa (externo)",
-    pressPageLink: "P\u00e1gina de prensa",
+    pressPageLink: "leer m\u00e1s",
+    pastMembersTitle: "Homenaje a miembros pasados",
     introMore: "M\u00e1s sobre el tr\u00edo",
     allConcerts: "Todos los conciertos",
     legalLink: "Aviso legal y privacidad",
@@ -225,28 +231,53 @@ const translations = {
 };
 
 const concerts = {
-  upcoming: [],
+  upcoming: [
+    {
+      date: "2026-10-02",
+      time: "19:00?",
+      city: "Berlin",
+      venue: "Kapelle am Urban",
+      composers: "Schumann",
+      ticketUrl: "#"
+    },
+    {
+      date: "2026-12-30",
+      time: "19:00?",
+      city: "Berlin",
+      venue: "Konzerthaus Berlin",
+      composers: "Piazzolla, Ravel",
+      ticketUrl: "#"
+    },
+    {
+      date: "2027-09-04",
+      time: "??:??",
+      city: "Plön",
+      venue: "Kulturforum Schwimmhalle Schloss Plön",
+      composers: "??",
+      ticketUrl: "#"
+    }
+  ],
   archive: [
     {
       date: "2025-08",
       city: "Berlin",
       venue: "Konzerthaus Berlin",
       program: "Debut in der neuen Formation",
-      ticketUrl: "https://www.eventim.de/"
+      ticketUrl: "#"
     },
     {
       date: "2023-11",
       city: "Gladbeck",
       venue: "Mathias-Jakobs-Stadthalle",
       program: "Forum Deutscher Musikhochschulen",
-      ticketUrl: "https://www.eventim.de/"
+      ticketUrl: "#"
     },
     {
       date: "2021-09-24",
       city: "Monchengladbach",
       venue: "Theater Monchengladbach",
       program: "Young Virtuosos",
-      ticketUrl: "https://www.eventim.de/"
+      ticketUrl: "#"
     }
   ]
 };
@@ -294,31 +325,48 @@ function formatDate(value, lang) {
   return value;
 }
 
-function createCard(concert, lang) {
+function createCard(concert, lang, showTicket = true) {
   const labels = translations[lang] || translations.de;
   const card = document.createElement("article");
-  card.className = "panel card";
+  card.className = "panel card card-row";
+
+  const info = document.createElement("div");
+  info.className = "card-info";
 
   const title = document.createElement("h3");
   title.textContent = concert.venue;
 
-  const date = document.createElement("p");
-  date.textContent = formatDate(concert.date, lang);
+  const dateTime = document.createElement("p");
+  const formattedDate = formatDate(concert.date, lang);
+  dateTime.textContent = concert.time ? `${formattedDate} · ${concert.time}` : formattedDate;
 
   const city = document.createElement("p");
   city.textContent = concert.city;
 
-  const program = document.createElement("p");
-  program.textContent = concert.program;
+  info.append(title, dateTime, city);
+
+  if (concert.composers) {
+    const composers = document.createElement("p");
+    composers.textContent = concert.composers;
+    info.appendChild(composers);
+  }
+
+  if (concert.program) {
+    const program = document.createElement("p");
+    program.textContent = concert.program;
+    info.appendChild(program);
+  }
 
   const ticket = document.createElement("a");
   ticket.className = "btn";
-  ticket.href = concert.ticketUrl;
-  ticket.target = "_blank";
-  ticket.rel = "noreferrer";
   ticket.textContent = labels.ticketLabel;
+  if (concert.ticketUrl && concert.ticketUrl !== "#") {
+    ticket.href = concert.ticketUrl;
+    ticket.target = "_blank";
+    ticket.rel = "noreferrer";
+  }
 
-  card.append(title, date, city, program, ticket);
+  card.append(info, ...(showTicket ? [ticket] : []));
   return card;
 }
 
@@ -349,10 +397,35 @@ function renderConcertsFull(lang) {
   } else {
     concerts.upcoming.forEach((event) => upcomingEl.appendChild(createCard(event, lang)));
   }
+
+  const byYear = {};
   concerts.archive
     .slice()
     .sort((a, b) => (a.date > b.date ? -1 : 1))
-    .forEach((event) => archiveEl.appendChild(createCard(event, lang)));
+    .forEach((event) => {
+      const year = event.date.substring(0, 4);
+      if (!byYear[year]) byYear[year] = [];
+      byYear[year].push(event);
+    });
+
+  Object.keys(byYear)
+    .sort((a, b) => b - a)
+    .forEach((year) => {
+      const details = document.createElement("details");
+      details.className = "archive-year";
+
+      const summary = document.createElement("summary");
+      summary.className = "archive-year-summary";
+      summary.textContent = year;
+      details.appendChild(summary);
+
+      const list = document.createElement("div");
+      list.className = "concert-list archive-year-list";
+      byYear[year].forEach((event) => list.appendChild(createCard(event, lang, false)));
+      details.appendChild(list);
+
+      archiveEl.appendChild(details);
+    });
 }
 
 function setActiveNav() {
