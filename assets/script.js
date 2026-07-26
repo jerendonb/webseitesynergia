@@ -110,7 +110,7 @@ const translations = {
     ctaBooking: "Booking",
     introParagraph:
       "Synergia Piano Trio was founded in Cologne in spring 2019. Their artistic work focuses on building a homogeneous ensemble sound and deepening the understanding of music and its context.",
-    concertsTitle: "Current concerts",
+    concertsTitle: "Upcoming concerts",
     concertsLead:
       "Upcoming dates and archive are listed in chronological order. Each event links to exactly one ticket source.",
     archiveTitle: "Highlights",
@@ -155,7 +155,7 @@ const translations = {
     bookingItem4: "Budget frame",
     bookingItem5: "Optional: program request",
     contactTitle: "Contact",
-    contactLead: "General inquiries to",
+    contactLead: "For general inquiries, please contact",
     pressTitle: "Press",
     pressQuote:
       "\u201c...in a stirring, flawless rendition - perfect chamber music bliss. Enthusiastic applause, a Schubert encore and the often-expressed wish to invite the trio again.\u201d",
@@ -203,7 +203,7 @@ const translations = {
     ctaBooking: "Booking",
     introParagraph:
       "Synergia Piano Trio fue fundado en Colonia en la primavera de 2019. Su trabajo artistico se centra en desarrollar un sonido de conjunto homogeneo y una comprension profunda de la musica y su contexto.",
-    concertsTitle: "Conciertos actuales",
+    concertsTitle: "Próximos conciertos",
     concertsLead:
       "Las proximas fechas y el archivo se muestran en orden cronologico. Cada evento tiene exactamente un enlace de entradas.",
     archiveTitle: "Highlights",
