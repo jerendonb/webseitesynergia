@@ -3,11 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Presse – Synergia Piano Trio</title>
+    <title>Press · Synergia Piano Trio</title>
     <meta name="description" content="Pressestimmen zum Synergia Piano Trio." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="assets/styles.css" />
   </head>
   <body>
@@ -18,23 +18,47 @@
     <header class="site-header">
       <a class="brand" href="index.html">Synergia Piano Trio</a>
       <nav class="main-nav" aria-label="Hauptnavigation">
-        <a href="trio.html" data-i18n="navTrio">Trio</a>
+        <div class="nav-item has-dropdown">
+          <a href="trio.html" data-i18n="navTrio">Trio</a>
+          <div class="nav-dropdown">
+            <a href="trio.html#bio" data-i18n="navBio">Bio</a>
+            <a href="trio.html#press" data-i18n="pressTitle">Press</a>
+          </div>
+        </div>
         <a href="termine.html" data-i18n="navConcerts">Concerts</a>
-        <a href="media.html" data-i18n="navMedia">Media</a>
-        <a href="programme.html" data-i18n="navRepertoire">Programs</a>
+        <div class="nav-item has-dropdown">
+          <a href="media.html" data-i18n="navMedia">Media</a>
+          <div class="nav-dropdown">
+            <a href="media.html#video">Video</a>
+            <a href="media.html#audio">Audio</a>
+            <a href="media.html#photos" data-i18n="mediaPhotos">Photos</a>
+          </div>
+        </div>
+        <div class="nav-item has-dropdown">
+          <a href="programme.html" data-i18n="navRepertoire">Programs</a>
+          <div class="nav-dropdown">
+            <a href="programme.html#sample-programs" data-i18n="programmeSectionTitle">Sample programs</a>
+            <a href="programme.html#repertoire" data-i18n="repertoireTitle">Repertoire</a>
+          </div>
+        </div>
         <a href="kontakt.html" data-i18n="navContact">Contact</a>
       </nav>
-      <div class="lang-switch" aria-label="Sprachauswahl">
-        <button class="lang-btn" data-lang="de">DE</button>
-        <button class="lang-btn is-active" data-lang="en">EN</button>
-        <button class="lang-btn" data-lang="es">ES</button>
+      <div class="header-right">
+        <div class="lang-switch" aria-label="Sprachauswahl">
+          <button class="lang-btn" data-lang="de">DE</button>
+          <button class="lang-btn is-active" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="es">ES</button>
+        </div>
+        <a class="instagram-link" href="https://www.instagram.com/synergia_piano_trio/" target="_blank" rel="noopener" aria-label="Instagram">
+          <img src="assets/Instagram_Glyph_Black.png" alt="Instagram" class="instagram-icon" />
+        </a>
       </div>
     </header>
 
     <main>
       <section class="section">
         <div class="panel prose">
-          <blockquote data-i18n="pressQuote">"...in einer mitreissenden, makellosen Wiedergabe - vollkommene Kammermusikseligkeit. Begeisterter Applaus, eine Schubert-Zugabe und der vielfach geausserte Wunsch, das Trio wieder einzuladen."</blockquote>
+          <blockquote data-i18n="pressQuote">"...in einer mitreissenden, makellosen Wiedergabe - vollkommene Kammermusikseligkeit. Begeisterter Applaus, eine Schubert-Zugabe und der vielfach geäußerte Wunsch, das Trio wieder einzuladen."</blockquote>
           <p class="small" data-i18n="pressSource">Quelle: Rheinische Post, 27.09.2021</p>
           <p class="small" data-i18n="pressPolicyNote">Aus urheberrechtlichen Grunden wird hier nur ein Auszug wiedergegeben.</p>
           <a class="btn" href="https://rp-online.de" target="_blank" rel="noreferrer" data-i18n="pressFullLink">Zur vollstandigen Kritik (extern)</a>
@@ -43,9 +67,32 @@
     </main>
 
     <footer class="site-footer">
-      <p>Synergia Piano Trio</p>
-      <p><a href="mailto:synergia.piano.trio@gmail.com">synergia.piano.trio@gmail.com</a></p>
-      <p class="small"><a href="rechtliches.html" data-i18n="legalLink">Impressum &amp; Datenschutz</a></p>
+      <div class="footer-grid">
+        <div class="footer-col">
+          <strong class="footer-brand">Synergia Piano Trio</strong>
+          <a href="mailto:synergia.piano.trio@gmail.com">synergia.piano.trio@gmail.com</a>
+          <span class="footer-social"><a href="https://www.instagram.com/synergia_piano_trio/" target="_blank" rel="noopener">Instagram</a><span aria-hidden="true"> · </span><a href="https://www.youtube.com/@SynergiaPianoTrio" target="_blank" rel="noopener">YouTube</a><span aria-hidden="true"> · </span><a href="https://soundcloud.com/synergia-piano-trio" target="_blank" rel="noopener">SoundCloud</a></span>
+          <span data-i18n="footerLocation">Berlin, Germany</span>
+          <span data-i18n="footerCopyright">© 2026 — All rights reserved</span>
+        </div>
+        <nav class="footer-col footer-col--center" aria-label="Sitemap">
+          <a href="index.html" data-i18n="footerHome">Home</a>
+          <span><a href="trio.html" data-i18n="navTrio">Trio</a><span aria-hidden="true"> · </span><a href="trio.html#bio" data-i18n="navBio">Bio</a><span aria-hidden="true"> · </span><a href="trio.html#press" data-i18n="pressTitle">Press</a></span>
+          <a href="termine.html" data-i18n="navConcerts">Concerts</a>
+          <span><a href="media.html" data-i18n="navMedia">Media</a><span aria-hidden="true"> · </span><a href="media.html#video">Video</a><span aria-hidden="true"> · </span><a href="media.html#audio">Audio</a><span aria-hidden="true"> · </span><a href="media.html#photos" data-i18n="mediaPhotos">Photos</a></span>
+          <span><a href="programme.html" data-i18n="navRepertoire">Programs</a><span aria-hidden="true"> · </span><a href="programme.html#sample-programs" data-i18n="programmeSectionTitle">Sample programs</a><span aria-hidden="true"> · </span><a href="programme.html#repertoire" data-i18n="repertoireTitle">Repertoire</a></span>
+          <a href="kontakt.html" data-i18n="navContact">Contact</a>
+        </nav>
+        <div class="footer-col footer-col--right">
+          <div class="lang-switch footer-lang" aria-label="Language">
+            <button class="lang-btn" data-lang="de">DE</button>
+            <button class="lang-btn is-active" data-lang="en">EN</button>
+            <button class="lang-btn" data-lang="es">ES</button>
+          </div>
+          <a href="impressum.html" data-i18n="footerLegalNotice">Legal Notice</a>
+          <a href="datenschutz.html" data-i18n="footerPrivacy">Privacy Policy</a>
+        </div>
+      </div>
     </footer>
 
     <script src="assets/script.js"></script>

@@ -24,9 +24,12 @@ html {
 
 body {
   margin: 0;
-  font-family: "Manrope", "Segoe UI", sans-serif;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  line-height: 1.65;
   color: var(--ink);
-  background: url("Synergia_Hintergrund.png") center center / cover no-repeat fixed;
+  background: url("Synergia_Piano_Trio-46(cropped).png") center top / cover no-repeat fixed;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -107,18 +110,56 @@ body {
   right: 0;
   grid-template-columns: 1fr auto;
   align-items: start;
-  padding: calc(env(safe-area-inset-top) + clamp(1rem, 3vw, 2.2rem)) clamp(1rem, 3vw, 2.2rem) 0;
+  padding: calc(env(safe-area-inset-top) + clamp(0.9rem, 2.2vw, 1.5rem)) clamp(0.9rem, 2.2vw, 1.5rem) 0;
   background: none;
   backdrop-filter: none;
   border-bottom: 0;
+}
+
+/* Subpages: icon floats below the lang buttons, outside the grid flow */
+.header-right {
+  position: relative;
+}
+
+.instagram-link {
+  position: absolute;
+  top: calc(100% + 1.5rem);
+  right: 0;
+  display: flex;
+  align-items: center;
+  line-height: 0;
+}
+
+/* Homepage: icon stacks below the lang buttons in normal flow */
+.home-page .header-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.75rem;
+}
+
+.home-page .instagram-link {
+  position: static;
+}
+
+.instagram-icon {
+  width: 30px;
+  height: 30px;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.instagram-link:hover .instagram-icon {
+  opacity: 1;
 }
 
 .brand {
   text-decoration: none;
   color: var(--ink);
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(1.4rem, 2.8vw, 2rem);
-  letter-spacing: 0.04em;
+  font-size: clamp(1.2rem, 2.2vw, 1.65rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .home-page .brand {
@@ -130,13 +171,16 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 0.9rem;
+  align-self: stretch;
+  align-items: center;
 }
 
 .main-nav a {
   color: var(--ink);
   text-decoration: none;
-  font-size: 0.94rem;
-  letter-spacing: 0.03em;
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
   border-bottom: 1px solid transparent;
   transition: border-color 0.25s ease;
 }
@@ -148,7 +192,11 @@ body {
 
 .main-nav a.nav-active {
   border-color: var(--ink);
-  font-weight: 600;
+  font-weight: 700;
+}
+
+.home-page .main-nav {
+  align-self: auto;
 }
 
 .home-page .main-nav a {
@@ -162,6 +210,63 @@ body {
   border-color: rgba(255, 255, 255, 0.85);
 }
 
+/* ── Subpage nav dropdowns ────────────────────────────────── */
+.nav-item {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  align-self: stretch;
+}
+
+.nav-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-6px);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background: rgba(236, 232, 223, 0.96);
+  backdrop-filter: blur(12px) saturate(1.3);
+  border: 1px solid var(--line);
+  padding: 0.4rem 0;
+  min-width: 5rem;
+  width: max-content;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.10);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 200;
+}
+
+
+.nav-dropdown a {
+  display: block;
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-align: center;
+  padding: 0.35rem 0.65rem;
+  border-bottom: 1px solid transparent;
+  border-left: none;
+  transition: border-color 0.18s ease, background 0.18s ease;
+}
+
+.nav-dropdown a:hover,
+.nav-dropdown a:focus-visible {
+  border-bottom-color: var(--ink);
+  background: rgba(23, 63, 51, 0.06);
+}
+
+.nav-item:hover .nav-dropdown,
+.nav-item:focus-within .nav-dropdown {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
 .lang-switch {
   display: inline-flex;
   gap: 0.35rem;
@@ -173,7 +278,10 @@ body {
   color: var(--ink);
   border-radius: 999px;
   padding: 0.35rem 0.6rem;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 500;
+  letter-spacing: 0.06em;
   cursor: pointer;
 }
 
@@ -195,8 +303,9 @@ body {
 }
 
 main {
-  width: min(1100px, 92vw);
-  margin: 2.2rem auto 2rem;
+  width: 50vw;
+  min-width: 560px;
+  margin: 2.2rem 0 2rem clamp(1rem, 3vw, 3rem);
   flex: 1;
 }
 
@@ -225,18 +334,20 @@ main {
 }
 
 .home-nav {
-  width: min(100%, 660px);
+  width: min(100%, 760px);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
   gap: 0.45rem 1.45rem;
-  padding: 0.32rem 0.95rem;
+  padding: 0.18rem 0.95rem;
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 999px;
   background: rgba(10, 10, 10, 0.18);
   backdrop-filter: blur(16px);
   box-shadow: 0 24px 54px rgba(0, 0, 0, 0.24);
   margin-inline: auto;
+  overflow: visible;
 }
 
 .home-nav a {
@@ -245,10 +356,76 @@ main {
   justify-content: center;
   min-height: 28px;
   padding: 0.08rem 0.12rem;
-  font-size: clamp(0.9rem, 1.05vw, 1rem);
-  letter-spacing: 0.06em;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.05rem, 1.3vw, 1.3rem);
+  font-weight: 400;
+  letter-spacing: 0.1em;
   line-height: 1;
   text-transform: uppercase;
+}
+
+/* ── Home nav items with hover sub-section links ─────── */
+.home-nav-item {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  align-self: stretch;
+}
+
+.home-nav-subs {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+  /* padding-bottom bridges the gap: the hitbox extends flush to the
+     nav-item top so the mouse never leaves a hovered zone mid-travel */
+  padding-bottom: 0.9rem;
+  opacity: 0;
+  /* visibility: hidden makes hidden subs fully non-interactive —
+     no invisible hitbox overlap between Media and Programs subs.
+     The 0.2s delay keeps it hoverable while opacity fades out,
+     giving the mouse time to reach the links before they close. */
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0s ease 0.2s;
+  z-index: 5;
+}
+
+.home-nav-item:hover .home-nav-subs,
+.home-nav-item:focus-within .home-nav-subs,
+.home-nav-subs:hover {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.2s ease, visibility 0s ease;
+}
+
+.home-nav .home-nav-subs a {
+  font-size: clamp(0.92rem, 1.1vw, 1.1rem);
+  font-weight: 400;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.82);
+  min-height: unset;
+  padding: 0;
+  line-height: 1;
+  border-bottom: 1px solid transparent;
+  transition: color 0.18s ease, border-color 0.18s ease;
+}
+
+.home-nav .home-nav-subs a:hover,
+.home-nav .home-nav-subs a:focus-visible {
+  color: #fff;
+  border-bottom-color: rgba(255, 255, 255, 0.7);
+}
+
+.home-nav-sep {
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 0.75rem;
+  line-height: 1;
+  user-select: none;
 }
 
 @supports (min-height: 100dvh) {
@@ -260,6 +437,20 @@ main {
 
 .section {
   margin-block: 1.6rem;
+  scroll-margin-top: 3.5rem;
+}
+
+/* #bio is the first section on trio.html — scrolling to it should look
+   identical to landing on trio.html from the top. A scroll-margin-top
+   larger than the section's natural offset from the document top forces
+   the browser to scroll all the way back to position 0, which is the
+   same result as clicking "Trio". */
+#bio {
+  scroll-margin-top: 100vh;
+}
+
+.section--full {
+  min-height: 100vh;
 }
 
 .section-head h2,
@@ -291,8 +482,9 @@ main {
 .eyebrow {
   margin: 0;
   text-transform: uppercase;
-  letter-spacing: 0.18em;
-  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  font-size: 0.82rem;
+  font-weight: 500;
   color: var(--muted);
 }
 
@@ -309,7 +501,10 @@ h1 {
   margin: 0;
   max-width: 54ch;
   color: var(--muted);
-  font-size: 1.03rem;
+  font-size: 1.2rem;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.6;
 }
 
 .hero-actions {
@@ -329,6 +524,10 @@ h1 {
   padding: 0.68rem 1rem;
   color: var(--ink);
   background: rgba(255, 255, 255, 0.55);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
   transition: transform 0.2s ease, background 0.2s ease;
 }
 
@@ -349,12 +548,38 @@ h1 {
   background: #215443;
 }
 
+.btn-unavailable {
+  border-color: rgba(15, 15, 16, 0.12);
+  color: #888;
+  background: rgba(180, 180, 180, 0.35);
+  cursor: default;
+  pointer-events: none;
+}
+
+.btn-unavailable:hover,
+.btn-unavailable:focus-visible {
+  transform: none;
+  background: rgba(180, 180, 180, 0.35);
+}
+
+.ticket-soon {
+  margin-top: 0.35rem;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--muted);
+  text-align: center;
+}
+
 .panel {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--card);
   box-shadow: var(--shadow);
   padding: clamp(1rem, 2.5vw, 1.4rem);
+}
+
+.contact-page .panel {
+  padding-block: clamp(0.55rem, 1.2vw, 0.75rem);
 }
 
 .grid {
@@ -446,6 +671,10 @@ h1 {
   padding: 0 1rem 1rem;
 }
 
+.programme-list .archive-year-summary {
+  font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+}
+
 .card h3 {
   margin: 0 0 0.4rem;
   font-family: "Cormorant Garamond", Georgia, serif;
@@ -464,13 +693,27 @@ h1 {
 .prose p,
 .prose li,
 blockquote {
-  line-height: 1.6;
+  line-height: 1.7;
+}
+
+.prose a {
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.prose a:hover,
+.prose a:focus-visible {
+  text-decoration: underline;
 }
 
 blockquote {
   margin: 0;
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(1.2rem, 2.4vw, 1.7rem);
+  font-size: clamp(1.25rem, 2.4vw, 1.75rem);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.55;
 }
 
 .repertoire-box {
@@ -520,6 +763,12 @@ blockquote {
   padding: clamp(0.75rem, 2vw, 1.2rem);
 }
 
+.video-grid {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.75rem, 2vw, 1.25rem);
+}
+
 .embed-wrap--ratio {
   position: relative;
   width: 100%;
@@ -544,10 +793,49 @@ blockquote {
   gap: 1.4rem;
 }
 
+.audio-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.audio-block iframe {
+  display: block;
+  border-radius: 6px;
+  margin-top: 1rem;
+}
+
+.audio-block iframe:first-child {
+  margin-top: 0;
+}
+
+.sc-meta {
+  font-size: 10px;
+  color: #aaa;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Verdana, Tahoma, sans-serif;
+  font-weight: 100;
+  line-break: anywhere;
+  word-break: normal;
+}
+
+.sc-meta a {
+  color: #aaa;
+  text-decoration: none;
+}
+
+.sc-meta a:hover {
+  text-decoration: underline;
+}
+
 .tidal-label {
   margin: 0;
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+  font-style: italic;
+  font-weight: 400;
   flex: 1;
 }
 
@@ -567,6 +855,8 @@ blockquote {
   padding: 0;
   overflow: hidden;
   border-radius: var(--radius);
+  position: relative;
+  cursor: zoom-in;
 }
 
 .media-photo-item img {
@@ -574,10 +864,114 @@ blockquote {
   width: 100%;
   height: auto;
   object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.media-photo-item:hover img {
+  transform: scale(1.03);
+}
+
+.photo-watermark {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.65rem;
+  font-size: 0.75rem;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.72);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.85);
+  pointer-events: none;
+  letter-spacing: 0.03em;
+  line-height: 1;
+}
+
+/* Lightbox */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  background: rgba(0, 0, 0, 0.93);
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+}
+
+.lightbox.is-open {
+  display: flex;
+}
+
+.lightbox__inner {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  line-height: 0;
+}
+
+.lightbox__img {
+  display: block;
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: var(--radius);
+  cursor: default;
+}
+
+.lightbox__watermark {
+  position: absolute;
+  bottom: 0.65rem;
+  right: 0.85rem;
+  font-size: 0.9rem;
+  font-style: italic;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  color: rgba(255, 255, 255, 0.72);
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.9);
+  pointer-events: none;
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
+.lightbox__close {
+  position: absolute;
+  top: -2.2rem;
+  right: 0;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0.2rem 0.4rem;
+  transition: color 0.2s;
+}
+
+.lightbox__close:hover {
+  color: #fff;
 }
 
 .legal-grid {
   align-items: start;
+}
+
+.imprint-panel {
+  font-size: 0.95rem;
+  padding: clamp(0.75rem, 1.5vw, 1rem);
+}
+
+.imprint-panel h2 {
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.imprint-panel p {
+  margin: 0.3rem 0 0;
+  line-height: 1.55;
+}
+
+.imprint-panel h3 {
+  font-size: clamp(1rem, 2.2vw, 1.15rem);
+  font-weight: 600;
+  margin: 1.2rem 0 0.2rem;
 }
 
 .trio-layout {
@@ -638,27 +1032,106 @@ blockquote {
 
 .small {
   color: var(--muted);
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 
 .site-footer {
-  padding: 0.4rem 1rem calc(env(safe-area-inset-bottom) + 0.4rem);
-  text-align: center;
+  padding: clamp(0.65rem, 1.4vw, 0.9rem) clamp(1rem, 3vw, 3rem) calc(env(safe-area-inset-bottom) + clamp(0.6rem, 1.4vw, 0.85rem));
   color: var(--muted);
   background: rgba(255, 255, 255, 0.55);
   backdrop-filter: blur(6px);
-  font-size: 0.82rem;
+  font-size: 0.88rem;
+  letter-spacing: 0.02em;
+  border-top: 1px solid var(--line);
 }
 
-.site-footer p {
-  margin: 0.2rem;
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.85rem clamp(1rem, 3vw, 2.5rem);
+  align-items: end;
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.footer-col--center {
+  align-items: center;
+  text-align: center;
+}
+
+.footer-col--right {
+  align-items: flex-end;
+  text-align: right;
+  align-self: center;
+}
+
+.footer-grid > .footer-col:first-child {
+  align-self: center;
+}
+
+.footer-brand {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: inherit;
+  margin-bottom: 0;
+}
+
+.footer-social {
+  line-height: 1.6;
 }
 
 .site-footer a {
   color: inherit;
+  text-decoration: none;
+  transition: color 0.18s ease;
+}
+
+.site-footer a:hover,
+.site-footer a:focus-visible {
+  color: var(--ink);
+}
+
+.footer-lang {
+  margin-bottom: 0.1rem;
+}
+
+.footer-lang .lang-btn {
+  border: none;
+  background: none;
+  padding: 0;
+  color: inherit;
+  font-size: 0.88rem;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: color 0.18s ease;
+}
+
+.footer-lang .lang-btn.is-active {
+  background: none;
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.footer-lang .lang-btn:hover {
+  color: var(--ink);
 }
 
 @media (max-width: 900px) {
+  main {
+    width: min(92vw, 100%);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   .site-header {
     grid-template-columns: 1fr;
     justify-items: start;
@@ -741,7 +1214,8 @@ blockquote {
     border-radius: 26px;
   }
 
-  .home-nav a {
+  .home-nav > a,
+  .home-nav-item > a {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -750,7 +1224,11 @@ blockquote {
     border: 1px solid rgba(255, 255, 255, 0.16);
     border-radius: 999px;
     background: rgba(255, 255, 255, 0.06);
-    font-size: 0.95rem;
+    font-size: 1.05rem;
+  }
+
+  .home-nav-item {
+    display: contents;
   }
 
   .grid,
@@ -780,7 +1258,19 @@ blockquote {
   }
 
   .site-footer {
-    padding: 2rem 1rem calc(env(safe-area-inset-bottom) + 1.2rem);
+    padding: 0.9rem 1rem calc(env(safe-area-inset-bottom) + 0.85rem);
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+
+  .footer-col,
+  .footer-col--center,
+  .footer-col--right {
+    align-items: flex-start;
+    text-align: left;
   }
 }
 
@@ -797,7 +1287,8 @@ blockquote {
     grid-template-columns: 1fr;
   }
 
-  .home-nav a {
+  .home-nav > a,
+  .home-nav-item > a {
     min-height: 50px;
   }
 

@@ -7,7 +7,7 @@
     <meta name="description" content="Repertoire des Synergia Piano Trio: Werke von der Klassik bis zur Moderne, Repertoireliste als Download." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="assets/styles.css" />
   </head>
   <body>
@@ -18,64 +18,278 @@
     <header class="site-header">
       <a class="brand" href="index.html">Synergia Piano Trio</a>
       <nav class="main-nav" aria-label="Hauptnavigation">
-        <a href="trio.html" data-i18n="navTrio">Trio</a>
+        <div class="nav-item has-dropdown">
+          <a href="trio.html" data-i18n="navTrio">Trio</a>
+          <div class="nav-dropdown">
+            <a href="trio.html#bio" data-i18n="navBio">Bio</a>
+            <a href="trio.html#press" data-i18n="pressTitle">Press</a>
+          </div>
+        </div>
         <a href="termine.html" data-i18n="navConcerts">Concerts</a>
-        <a href="media.html" data-i18n="navMedia">Media</a>
-        <a href="programme.html" data-i18n="navRepertoire">Programs</a>
+        <div class="nav-item has-dropdown">
+          <a href="media.html" data-i18n="navMedia">Media</a>
+          <div class="nav-dropdown">
+            <a href="media.html#video">Video</a>
+            <a href="media.html#audio">Audio</a>
+            <a href="media.html#photos" data-i18n="mediaPhotos">Photos</a>
+          </div>
+        </div>
+        <div class="nav-item has-dropdown">
+          <a href="programme.html" data-i18n="navRepertoire">Programs</a>
+          <div class="nav-dropdown">
+            <a href="programme.html#sample-programs" data-i18n="programmeSectionTitle">Sample programs</a>
+            <a href="programme.html#repertoire" data-i18n="repertoireTitle">Repertoire</a>
+          </div>
+        </div>
         <a href="kontakt.html" data-i18n="navContact">Contact</a>
       </nav>
-      <div class="lang-switch" aria-label="Sprachauswahl">
-        <button class="lang-btn" data-lang="de">DE</button>
-        <button class="lang-btn is-active" data-lang="en">EN</button>
-        <button class="lang-btn" data-lang="es">ES</button>
+      <div class="header-right">
+        <div class="lang-switch" aria-label="Sprachauswahl">
+          <button class="lang-btn" data-lang="de">DE</button>
+          <button class="lang-btn is-active" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="es">ES</button>
+        </div>
+        <a class="instagram-link" href="https://www.instagram.com/synergia_piano_trio/" target="_blank" rel="noopener" aria-label="Instagram">
+          <img src="assets/Instagram_Glyph_Black.png" alt="Instagram" class="instagram-icon" />
+        </a>
       </div>
     </header>
 
     <main>
-      <section class="section">
+      <section class="section" id="sample-programs">
         <div class="section-head split-head glass-panel">
-          <h2>Ravel y Piazzolla: calle, tango y jazz.</h2>
+          <h2 data-i18n="programmeSectionTitle">Programmbeispiele</h2>
         </div>
-        <div class="panel prose" style="margin-top:0.9rem;">
-          <h3>20. / 21. Jahrhundert</h3>
-          <ul>
-            <li>Rebecca Clarke: Trio</li>
-            <li>Hans Werner Henze: Kammersonate</li>
-            <li>Toru Takemitsu: Between Tides</li>
-          </ul>
+        <div class="concert-list programme-list" style="margin-top:0.9rem;">
+
+          <details class="archive-year">
+            <summary class="archive-year-summary" data-i18n="prog1Title">Ravel y Piazzolla: calle, tango y jazz</summary>
+            <div class="archive-year-list prose" data-lang-block="es">
+              <ul>
+                <li>Ástor Piazzolla: <em>Otoño porteño</em> – arreglo del Synergia Piano Trio</li>
+                <li>Maurice Ravel: <em>Allegro</em> de la Sonata para violín y violonchelo</li>
+                <li>Ástor Piazzolla: <em>Invierno porteño</em> – arreglo del Synergia Piano Trio</li>
+                <li>Maurice Ravel: <em>Blues</em> de la Sonata para piano y violín</li>
+                <li>Ástor Piazzolla: Le grand tango</li>
+                <li>Ástor Piazzolla: <em>Primavera porteña</em> – arreglo del Synergia Piano Trio</li>
+                <li>Maurice Ravel: <em>Très vif</em> de la Sonata para violín y violonchelo</li>
+                <li>Ástor Piazzolla: <em>Verano porteño</em> – arreglo del Synergia Piano Trio</li>
+                <li>Maurice Ravel: Trío, M.67</li>
+              </ul>
+              <p class="small">Duración total de la música: 80–83 minutos</p>
+            </div>
+            <div class="archive-year-list prose" data-lang-block="en" hidden>
+              <ul>
+                <li>Ástor Piazzolla: <em>Otoño porteño</em> – arranged by the Synergia Piano Trio</li>
+                <li>Maurice Ravel: <em>Allegro</em> from the Sonata for Violin and Cello</li>
+                <li>Ástor Piazzolla: <em>Invierno porteño</em> – arranged by the Synergia Piano Trio</li>
+                <li>Maurice Ravel: <em>Blues</em> from the Sonata for Violin and Piano</li>
+                <li>Ástor Piazzolla: Le grand tango</li>
+                <li>Ástor Piazzolla: <em>Primavera porteña</em> – arranged by the Synergia Piano Trio</li>
+                <li>Maurice Ravel: <em>Très vif</em> from the Sonata for Violin and Cello</li>
+                <li>Ástor Piazzolla: <em>Verano porteño</em> – arranged by the Synergia Piano Trio</li>
+                <li>Maurice Ravel: Piano Trio, M.67</li>
+              </ul>
+              <p class="small">Total duration of the music: 80–83 minutes</p>
+            </div>
+            <div class="archive-year-list prose" data-lang-block="de" hidden>
+              <ul>
+                <li>Ástor Piazzolla: <em>Otoño Porteño</em> – Bearbeitung des Synergia Piano Trio</li>
+                <li>Maurice Ravel: <em>Allegro</em> aus der Sonate für Violine und Cello</li>
+                <li>Ástor Piazzolla: <em>Invierno Porteño</em> – Bearbeitung des Synergia Piano Trio</li>
+                <li>Maurice Ravel: <em>Blues</em> aus der Sonate für Violine und Klavier</li>
+                <li>Ástor Piazzolla: Le grand tango</li>
+                <li>Ástor Piazzolla: <em>Primavera Porteña</em> – Bearbeitung des Synergia Piano Trio</li>
+                <li>Maurice Ravel: <em>Très vif</em> aus der Sonate für Violine und Cello</li>
+                <li>Ástor Piazzolla: <em>Verano Porteño</em> – Bearbeitung des Synergia Piano Trio</li>
+                <li>Maurice Ravel: Klaviertrio, M. 67</li>
+              </ul>
+              <p class="small">Gesamtdauer der Musik: 80–83 Minuten</p>
+            </div>
+          </details>
+
+          <details class="archive-year">
+            <summary class="archive-year-summary" data-i18n="prog2Title">Tristia: las múltiples caras de la tristeza</summary>
+            <div class="archive-year-list prose" data-lang-block="es">
+              <ul>
+                <li>Franz Liszt–Eduard Lassen: <em>Tristia – La vallée d'Obermann</em>, S. 723</li>
+                <li>Arnó Babadzhanián: Trío</li>
+                <li>Serguéi Rajmáninov: Trío elegíaco n.º 1</li>
+                <li>Dmitri Shostakóvich: Trío n.º 2, op. 67</li>
+              </ul>
+              <p class="small">Duración total de la música: 82 minutos</p>
+            </div>
+            <div class="archive-year-list prose" data-lang-block="en" hidden>
+              <ul>
+                <li>Franz Liszt–Eduard Lassen: <em>Tristia – La vallée d'Obermann</em>, S. 723</li>
+                <li>Arno Babadjanian: Piano Trio</li>
+                <li>Sergei Rachmaninoff: Trio élégiaque No. 1</li>
+                <li>Dmitri Shostakovich: Piano Trio No. 2, Op. 67</li>
+              </ul>
+              <p class="small">Total duration of the music: 82 minutes</p>
+            </div>
+            <div class="archive-year-list prose" data-lang-block="de" hidden>
+              <ul>
+                <li>Franz Liszt–Eduard Lassen: <em>Tristia – La vallée d'Obermann</em>, S. 723</li>
+                <li>Arno Babadschanjan: Klaviertrio</li>
+                <li>Sergei Rachmaninow: Trio élégiaque Nr. 1</li>
+                <li>Dmitri Schostakowitsch: Klaviertrio Nr. 2, op. 67</li>
+              </ul>
+              <p class="small">Gesamtdauer der Musik: 82 Minuten</p>
+            </div>
+          </details>
+
+          <details class="archive-year">
+            <summary class="archive-year-summary" data-i18n="prog3Title">Música del romanticismo para fortepiano</summary>
+            <div class="archive-year-list prose" data-lang-block="es">
+              <ul>
+                <li>Franz Liszt–Eduard Lassen: <em>Tristia – La vallée d'Obermann</em>, S. 723</li>
+                <li>Clara Schumann: Trío en sol menor, op. 17</li>
+                <li>Johannes Brahms: Trío n.º 1, op. 8</li>
+              </ul>
+              <p class="small">Duración total de la música: 84 minutos</p>
+            </div>
+            <div class="archive-year-list prose" data-lang-block="en" hidden>
+              <ul>
+                <li>Franz Liszt–Eduard Lassen: <em>Tristia – La vallée d'Obermann</em>, S. 723</li>
+                <li>Clara Schumann: Piano Trio in G minor, Op. 17</li>
+                <li>Johannes Brahms: Piano Trio No. 1, Op. 8</li>
+              </ul>
+              <p class="small">Total duration of the music: 84 minutes</p>
+            </div>
+            <div class="archive-year-list prose" data-lang-block="de" hidden>
+              <ul>
+                <li>Franz Liszt–Eduard Lassen: <em>Tristia – La vallée d'Obermann</em>, S. 723</li>
+                <li>Clara Schumann: Klaviertrio g-Moll, op. 17</li>
+                <li>Johannes Brahms: Klaviertrio Nr. 1, op. 8</li>
+              </ul>
+              <p class="small">Gesamtdauer der Musik: 84 Minuten</p>
+            </div>
+          </details>
+
         </div>
       </section>
 
-      <section class="section">
+      <section class="section" id="repertoire">
         <div class="section-head split-head glass-panel">
-          <h2>Tristia: las múltiples caras de la tristeza.</h2>
+          <h2 data-i18n="repertoireTitle">Repertoire</h2>
         </div>
-        <div class="panel prose" style="margin-top:0.9rem;">
-          <h3>Klassik</h3>
-          <ul>
-            <li>Joseph Haydn: Klaviertrio D-Dur Hob. XV:24</li>
-            <li>Wolfgang Amadeus Mozart: Werke fur Klaviertrio (Auswahl)</li>
-          </ul>
-          <h3>Romantik</h3>
-          <ul>
-            <li>Franz Schubert: Klaviertrio B-Dur op. 99 D 898</li>
-            <li>Robert Schumann: Werke fur Klaviertrio (Auswahl)</li>
-          </ul>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="panel repertoire-box">
-          <a class="btn" href="downloads/repertoire-liste-synergia.txt" download data-i18n="repertoireDownload">Download full repertoire list</a>
-          <p class="small" data-i18n="repertoireHint">This file can be replaced by a final PDF at any time.</p>
+        <div class="concert-list programme-list" style="margin-top:0.9rem;">
+          <details class="archive-year">
+            <summary class="archive-year-summary" data-i18n="composersListTitle">List of composers</summary>
+            <div class="archive-year-list prose" data-lang-block="es">
+              <ul>
+                <li>Beethoven, Ludwig van</li>
+                <li>Brahms, Johannes</li>
+                <li>Carter, Elliott</li>
+                <li>Clarke, Rebecca</li>
+                <li>Debussy, Claude</li>
+                <li>Grieg, Edvard</li>
+                <li>Haydn, Joseph</li>
+                <li>Henze, Hans Werner</li>
+                <li>Liszt, Franz</li>
+                <li>Mendelssohn, Felix</li>
+                <li>Mozart, Wolfgang Amadeus</li>
+                <li>Pärt, Arvo</li>
+                <li>Piazzolla, Ástor</li>
+                <li>Rajmáninov, Serguéi</li>
+                <li>Ravel, Maurice</li>
+                <li>Ries, Ferdinand</li>
+                <li>Schumann, Clara</li>
+                <li>Schumann, Robert</li>
+                <li>Schubert, Franz</li>
+                <li>Shchedrin, Rodion</li>
+                <li>Shostakóvich, Dmitri</li>
+                <li>Takemitsu, Toru</li>
+                <li>Turina, Joaquín</li>
+              </ul>
+            </div>
+            <div class="archive-year-list prose" data-lang-block="en" hidden>
+              <ul>
+                <li>Beethoven, Ludwig van</li>
+                <li>Brahms, Johannes</li>
+                <li>Carter, Elliott</li>
+                <li>Clarke, Rebecca</li>
+                <li>Debussy, Claude</li>
+                <li>Grieg, Edvard</li>
+                <li>Haydn, Joseph</li>
+                <li>Henze, Hans Werner</li>
+                <li>Liszt, Franz</li>
+                <li>Mendelssohn, Felix</li>
+                <li>Mozart, Wolfgang Amadeus</li>
+                <li>Pärt, Arvo</li>
+                <li>Piazzolla, Ástor</li>
+                <li>Rachmaninoff, Sergei</li>
+                <li>Ravel, Maurice</li>
+                <li>Ries, Ferdinand</li>
+                <li>Schumann, Clara</li>
+                <li>Schumann, Robert</li>
+                <li>Schubert, Franz</li>
+                <li>Shchedrin, Rodion</li>
+                <li>Shostakovich, Dmitri</li>
+                <li>Takemitsu, Toru</li>
+                <li>Turina, Joaquín</li>
+              </ul>
+            </div>
+            <div class="archive-year-list prose" data-lang-block="de" hidden>
+              <ul>
+                <li>Beethoven, Ludwig van</li>
+                <li>Brahms, Johannes</li>
+                <li>Carter, Elliott</li>
+                <li>Clarke, Rebecca</li>
+                <li>Debussy, Claude</li>
+                <li>Grieg, Edvard</li>
+                <li>Haydn, Joseph</li>
+                <li>Henze, Hans Werner</li>
+                <li>Liszt, Franz</li>
+                <li>Mendelssohn, Felix</li>
+                <li>Mozart, Wolfgang Amadeus</li>
+                <li>Pärt, Arvo</li>
+                <li>Piazzolla, Ástor</li>
+                <li>Rachmaninow, Sergei</li>
+                <li>Ravel, Maurice</li>
+                <li>Ries, Ferdinand</li>
+                <li>Schumann, Clara</li>
+                <li>Schumann, Robert</li>
+                <li>Schubert, Franz</li>
+                <li>Schtschedrin, Rodion</li>
+                <li>Schostakowitsch, Dmitri</li>
+                <li>Takemitsu, Toru</li>
+                <li>Turina, Joaquín</li>
+              </ul>
+            </div>
+          </details>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <p>Synergia Piano Trio</p>
-      <p><a href="mailto:synergia.piano.trio@gmail.com">synergia.piano.trio@gmail.com</a></p>
-      <p class="small"><a href="rechtliches.html" data-i18n="legalLink">Impressum &amp; Datenschutz</a></p>
+      <div class="footer-grid">
+        <div class="footer-col">
+          <strong class="footer-brand">Synergia Piano Trio</strong>
+          <a href="mailto:synergia.piano.trio@gmail.com">synergia.piano.trio@gmail.com</a>
+          <span class="footer-social"><a href="https://www.instagram.com/synergia_piano_trio/" target="_blank" rel="noopener">Instagram</a><span aria-hidden="true"> · </span><a href="https://www.youtube.com/@SynergiaPianoTrio" target="_blank" rel="noopener">YouTube</a><span aria-hidden="true"> · </span><a href="https://soundcloud.com/synergia-piano-trio" target="_blank" rel="noopener">SoundCloud</a></span>
+          <span data-i18n="footerLocation">Berlin, Germany</span>
+          <span data-i18n="footerCopyright">© 2026 — All rights reserved</span>
+        </div>
+        <nav class="footer-col footer-col--center" aria-label="Sitemap">
+          <a href="index.html" data-i18n="footerHome">Home</a>
+          <span><a href="trio.html" data-i18n="navTrio">Trio</a><span aria-hidden="true"> · </span><a href="trio.html#bio" data-i18n="navBio">Bio</a><span aria-hidden="true"> · </span><a href="trio.html#press" data-i18n="pressTitle">Press</a></span>
+          <a href="termine.html" data-i18n="navConcerts">Concerts</a>
+          <span><a href="media.html" data-i18n="navMedia">Media</a><span aria-hidden="true"> · </span><a href="media.html#video">Video</a><span aria-hidden="true"> · </span><a href="media.html#audio">Audio</a><span aria-hidden="true"> · </span><a href="media.html#photos" data-i18n="mediaPhotos">Photos</a></span>
+          <span><a href="programme.html" data-i18n="navRepertoire">Programs</a><span aria-hidden="true"> · </span><a href="programme.html#sample-programs" data-i18n="programmeSectionTitle">Sample programs</a><span aria-hidden="true"> · </span><a href="programme.html#repertoire" data-i18n="repertoireTitle">Repertoire</a></span>
+          <a href="kontakt.html" data-i18n="navContact">Contact</a>
+        </nav>
+        <div class="footer-col footer-col--right">
+          <div class="lang-switch footer-lang" aria-label="Language">
+            <button class="lang-btn" data-lang="de">DE</button>
+            <button class="lang-btn is-active" data-lang="en">EN</button>
+            <button class="lang-btn" data-lang="es">ES</button>
+          </div>
+          <a href="impressum.html" data-i18n="footerLegalNotice">Legal Notice</a>
+          <a href="datenschutz.html" data-i18n="footerPrivacy">Privacy Policy</a>
+        </div>
+      </div>
     </footer>
 
     <script src="assets/script.js"></script>

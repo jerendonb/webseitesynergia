@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="assets/styles.css" />
@@ -23,10 +23,15 @@
 
     <header class="site-header">
       <a class="brand" href="index.html">Synergia Piano Trio</a>
-      <div class="lang-switch" aria-label="Sprachauswahl">
-        <button class="lang-btn" data-lang="de">DE</button>
-        <button class="lang-btn is-active" data-lang="en">EN</button>
-        <button class="lang-btn" data-lang="es">ES</button>
+      <div class="header-right">
+        <div class="lang-switch" aria-label="Sprachauswahl">
+          <button class="lang-btn" data-lang="de">DE</button>
+          <button class="lang-btn is-active" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="es">ES</button>
+        </div>
+        <a class="instagram-link" href="https://www.instagram.com/synergia_piano_trio/" target="_blank" rel="noopener" aria-label="Instagram">
+          <img src="assets/Instagram_Glyph_White.png" alt="Instagram" class="instagram-icon" />
+        </a>
       </div>
     </header>
 
@@ -34,10 +39,33 @@
       <section id="start" class="home-hero" aria-label="Synergia Piano Trio">
         <div class="home-hero-overlay">
           <nav class="main-nav home-nav" aria-label="Hauptnavigation">
-            <a href="trio.html" data-i18n="navTrio">Trio</a>
+            <div class="home-nav-item">
+              <div class="home-nav-subs">
+                <a href="trio.html#bio" data-i18n="navBio">Bio</a>
+                <span class="home-nav-sep" aria-hidden="true">·</span>
+                <a href="trio.html#press" data-i18n="pressTitle">Press</a>
+              </div>
+              <a href="trio.html" data-i18n="navTrio">Trio</a>
+            </div>
             <a href="termine.html" data-i18n="navConcerts">Concerts</a>
-            <a href="media.html" data-i18n="navMedia">Media</a>
-            <a href="programme.html" data-i18n="navRepertoire">Programs</a>
+            <div class="home-nav-item">
+              <div class="home-nav-subs">
+                <a href="media.html#video">Video</a>
+                <span class="home-nav-sep" aria-hidden="true">·</span>
+                <a href="media.html#audio">Audio</a>
+                <span class="home-nav-sep" aria-hidden="true">·</span>
+                <a href="media.html#photos" data-i18n="mediaPhotos">Photos</a>
+              </div>
+              <a href="media.html" data-i18n="navMedia">Media</a>
+            </div>
+            <div class="home-nav-item">
+              <div class="home-nav-subs">
+                <a href="programme.html#sample-programs" data-i18n="programmeSectionTitle">Sample programs</a>
+                <span class="home-nav-sep" aria-hidden="true">·</span>
+                <a href="programme.html#repertoire" data-i18n="repertoireTitle">Repertoire</a>
+              </div>
+              <a href="programme.html" data-i18n="navRepertoire">Programs</a>
+            </div>
             <a href="kontakt.html" data-i18n="navContact">Contact</a>
           </nav>
         </div>

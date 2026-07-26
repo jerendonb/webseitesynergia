@@ -1,7 +1,9 @@
 const translations = {
   de: {
     navTrio: "Trio",
+    navBio: "Biografie",
     navRepertoire: "Programme",
+    programmeSectionTitle: "Programmbeispiele",
     navConcerts: "Termine",
     navMedia: "Media",
     navBooking: "Booking",
@@ -18,11 +20,14 @@ const translations = {
     concertsTitle: "Aktuelle Konzerte",
     concertsLead:
       "Kommende Termine und Archiv chronologisch geordnet. Jeder Termin fuhrt zu genau einem Ticketlink.",
-    archiveTitle: "Archiv",
+    archiveTitle: "Highlights",
     archiveLead: "Vergangene Konzerte bleiben dauerhaft sichtbar.",
     noUpcoming: "Neue Konzerttermine werden in Kurze veroffentlicht.",
+    composersPrefix: "Werke von ",
     ticketLabel: "Tickets",
+    ticketsSoon: "Demnächst verfügbar",
     tidalBtn: "Auf Tidal anh\u00f6ren",
+    mediaPhotos: "Fotos",
     trioTitle: "Das Trio",
     trioMember1: "Juan-Esteban Rend\u00f3n \u2013 Violine",
     trioMember2: "Camilo Chaparro \u2013 Violoncello",
@@ -30,10 +35,12 @@ const translations = {
     trioP1a: "Das",
     trioP1b: "wurde im Fr\u00fchjahr 2019 in K\u00f6ln gegr\u00fcndet. Im Mittelpunkt der k\u00fcnstlerischen Arbeit stand immer die Entwicklung eines homogenen Klangk\u00f6rpers sowie ein tieferes Verst\u00e4ndnis der Musik und ihres Kontextes.",
     trioP2a: "Um seine F\u00e4higkeiten und sein Wissen zu erweitern, hat das Trio den Master Kammermusik als festes Ensemble an der",
-    trioP2b: " studiert und 2024 erfolgreich absolviert. Zahlreiche Auftritte bei Festivals, Wettbewerben und Konzertreihen haben das Trio in Ihrer Professionalit\u00e4t gest\u00e4rkt.",
-    trioP3a: "Im Sommer 2025 verk\u00fcndete das Trio die Aufnahme seines neuen Geigers. Kurz darauf gaben Juan-Esteban Rend\u00f3n, Camilo Chaparro und Maria Shykyrinska ihr Deb\u00fct in der neuen Formation im",
-    trioP3b: ".",
-    trioP4: "Die drei Musiker:innen leben und arbeiten in Berlin.",
+    trioP2b: " studiert und 2024 erfolgreich absolviert. Zahlreiche Auftritte bei Festivals, Wettbewerben und Konzertreihen haben das Trio in Ihrer Professionalit\u00e4t gest\u00e4rkt, darunter das Festival \u201eMuziek Biennale Niederrhein\u201c, der 21. Internationale Wettbewerb LAMS (<em>Laboratorio Arte, Musica e Spettacolo</em>) sowie der Zyklus \u201eJunge Virtuosen\u201c des Theaters M\u00f6nchengladbach.",
+    trioP3: "Anfang 2025 entschied sich das Gr\u00fcndungsmitglied Andria Chang, ihren eigenen k\u00fcnstlerischen Weg zu gehen. Im Sommer desselben Jahres verk\u00fcndete das Trio die Aufnahme seines neuen Geigers.",
+    trioP4a: "Kurz darauf gaben Juan-Esteban Rend\u00f3n (Violine), Camilo Chaparro (Violoncello) und Maria Shykyrinska (Klavier) ihr Deb\u00fct in der neuen Formation im",
+    trioP4b: ".",
+    trioP4c: "Seitdem konzertiert das Trio regelm\u00e4\u00dfig und fokussiert sich dabei auf die Gestaltung thematischer Programme sowie die Erweiterung seines Repertoires.",
+    trioP5: "Die drei Musiker:innen leben und arbeiten in Berlin.",
     repertoireTitle: "Repertoire",
     repertoireLead:
       "Die Repertoireliste steht als Download bereit. Programmschwerpunkte konnen flexibel fur Veranstaltungsformate abgestimmt werden.",
@@ -56,15 +63,16 @@ const translations = {
     bookingItem4: "Budgetrahmen",
     bookingItem5: "Optional: Programmwunsch",
     contactTitle: "Kontakt",
-    contactLead: "Allgemeine Anfragen:",
+    contactLead: "Bitte allgemeine Anfragen an",
     pressTitle: "Presse",
     pressQuote:
-      "\"...in einer mitreissenden, makellosen Wiedergabe - vollkommene Kammermusikseligkeit. Begeisterter Applaus, eine Schubert-Zugabe und der vielfach geausserte Wunsch, das Trio wieder einzuladen.\"",
-    pressSource: "Quelle: Rheinische Post, 27.09.2021",
+      "\u201e...in einer mitrei\u00dfenden, makellosen Wiedergabe - vollkommene Kammermusikseligkeit. Begeisterter Applaus, eine Schubert-Zugabe und der vielfach ge\u00e4u\u00dferte Wunsch, das Trio wieder einzuladen.\u201c",
+    pressSource: "Rheinische Post",
     pressPolicyNote: "Aus urheberrechtlichen Grunden wird hier nur ein Auszug wiedergegeben.",
     pressFullLink: "Zur vollstandigen Kritik (extern)",
     pressPageLink: "mehr lesen",
     pastMembersTitle: "Hommage an fr\u00fchere Mitglieder",
+    andriaChang: "Andria Chang, Violine, Gründungsmitglied (2019\u20132025)",
     introMore: "Mehr \u00fcber das Trio",
     allConcerts: "Alle Termine",
     legalLink: "Impressum \u0026 Datenschutz",
@@ -74,10 +82,20 @@ const translations = {
       "Platzhalter: Vollstandiges Impressum mit ladungsfahiger Anschrift und Kontaktverantwortung erganzen.",
     privacyTitle: "Datenschutz",
     privacyBody:
-      "Platzhalter: Datenschutzerklarung fur Hosting, eingebettete Inhalte und Kontaktwege erganzen."
+      "Platzhalter: Datenschutzerklarung fur Hosting, eingebettete Inhalte und Kontaktwege erganzen.",
+    prog1Title: "Ravel und Piazzolla: Stra\u00dfe, Tango und Jazz",
+    prog2Title: "Tristia: Die vielen Gesichter der Traurigkeit",
+    prog3Title: "Romantische Musik f\u00fcr Hammerklavier",
+    composersListTitle: "Komponistenliste",
+    footerHome: "Startseite",
+    footerLocation: "Berlin, Deutschland",
+    footerCopyright: "© 2026 — Alle Rechte vorbehalten",
+    footerLegalNotice: "Impressum",
+    footerPrivacy: "Datenschutz"
   },
   en: {
     navTrio: "Trio",
+    navBio: "Bio",
     navRepertoire: "Programs",
     navConcerts: "Concerts",
     navMedia: "Media",
@@ -95,11 +113,14 @@ const translations = {
     concertsTitle: "Current concerts",
     concertsLead:
       "Upcoming dates and archive are listed in chronological order. Each event links to exactly one ticket source.",
-    archiveTitle: "Archive",
+    archiveTitle: "Highlights",
     archiveLead: "Past concerts remain visible permanently.",
     noUpcoming: "New concert dates will be announced soon.",
+    composersPrefix: "Works from ",
     ticketLabel: "Tickets",
+    ticketsSoon: "Available soon",
     tidalBtn: "Listen on Tidal",
+    mediaPhotos: "Photos",
     trioTitle: "The Trio",
     trioMember1: "Juan-Esteban Rend\u00f3n \u2013 violin",
     trioMember2: "Camilo Chaparro \u2013 cello",
@@ -107,10 +128,12 @@ const translations = {
     trioP1a: "The",
     trioP1b: "was founded in Cologne in spring 2019. Its artistic focus has always been to develop a homogeneous sound and a deeper understanding of music and its context.",
     trioP2a: "To expand its skills and artistic perspective, the trio completed a Master\u2019s degree in Chamber Music at the",
-    trioP2b: ", graduating in 2024. Numerous appearances at festivals, competitions and concert series have strengthened the ensemble\u2019s professional profile.",
-    trioP3a: "In summer 2025, the trio welcomed its new violinist. Shortly after, Juan-Esteban Rend\u00f3n, Camilo Chaparro and Maria Shykyrinska made their debut in the new lineup at the",
-    trioP3b: ".",
-    trioP4: "All three musicians live and work in Berlin.",
+    trioP2b: ", graduating in 2024. Numerous appearances at festivals, competitions and concert series have strengthened the trio\u2019s professional profile, including the festival \u201cMuziek Biennale Niederrhein\u201d, the 21st International Competition LAMS (<em>Laboratorio Arte, Musica e Spettacolo</em>) and the series \u201c<em>Junge Virtuosen</em>\u201d of the Theater M\u00f6nchengladbach.",
+    trioP3: "Early in 2025, founding member Andria Chang decided to pursue her own artistic path. That same summer, the trio announced the addition of its new violinist.",
+    trioP4a: "Shortly after, Juan-Esteban Rend\u00f3n (violin), Camilo Chaparro (cello) and Maria Shykyrinska (piano) made their debut in the new lineup at the",
+    trioP4b: ".",
+    trioP4c: "Since then, the trio performs regularly, focusing on the creation of thematic programmes and the expansion of its repertoire.",
+    trioP5: "All three musicians live and work in Berlin.",
     repertoireTitle: "Repertoire",
     repertoireLead:
       "The repertoire list is available for download. Program focus can be tailored flexibly to each venue and format.",
@@ -132,28 +155,40 @@ const translations = {
     bookingItem4: "Budget frame",
     bookingItem5: "Optional: program request",
     contactTitle: "Contact",
-    contactLead: "General inquiries:",
+    contactLead: "General inquiries to",
     pressTitle: "Press",
     pressQuote:
-      "\"...in a stirring, flawless rendition - perfect chamber music bliss. Enthusiastic applause, a Schubert encore and the often-expressed wish to invite the trio again.\"",
-    pressSource: "Source: Rheinische Post, Sept 27, 2021",
+      "\u201c...in a stirring, flawless rendition - perfect chamber music bliss. Enthusiastic applause, a Schubert encore and the often-expressed wish to invite the trio again.\u201d",
+    pressSource: "Rheinische Post",
     pressPolicyNote: "For copyright reasons, only an excerpt is shown here.",
     pressFullLink: "Read full review (external)",
     pressPageLink: "read more",
     pastMembersTitle: "Tribute to past members",
+    andriaChang: "Andria Chang, violin, founding member (2019\u20132025)",
     introMore: "More about the trio",
     allConcerts: "All concerts",
     legalLink: "Imprint \u0026 Privacy",
     legalTitle: "Legal",
-    imprintTitle: "Imprint",
+    imprintTitle: "Legal Notice",
     imprintBody:
       "Placeholder: Add full legal imprint including responsible address and contact details.",
-    privacyTitle: "Privacy",
+    privacyTitle: "Privacy Policy",
     privacyBody:
-      "Placeholder: Add privacy policy for hosting, embedded content and contact channels."
+      "Placeholder: Add privacy policy for hosting, embedded content and contact channels.",
+    programmeSectionTitle: "Sample programs",
+    prog1Title: "Ravel and Piazzolla: Street, Tango, and Jazz",
+    prog2Title: "Tristia: The Many Faces of Sadness",
+    prog3Title: "Romantic Music for Fortepiano",
+    composersListTitle: "List of composers",
+    footerHome: "Home",
+    footerLocation: "Berlin, Germany",
+    footerCopyright: "© 2026 — All rights reserved",
+    footerLegalNotice: "Legal Notice",
+    footerPrivacy: "Privacy Policy"
   },
   es: {
     navTrio: "Tr\u00edo",
+    navBio: "Rese\u00f1a",
     navRepertoire: "Programas",
     navConcerts: "Conciertos",
     navMedia: "Media",
@@ -171,22 +206,27 @@ const translations = {
     concertsTitle: "Conciertos actuales",
     concertsLead:
       "Las proximas fechas y el archivo se muestran en orden cronologico. Cada evento tiene exactamente un enlace de entradas.",
-    archiveTitle: "Archivo",
+    archiveTitle: "Highlights",
     archiveLead: "Los conciertos pasados permanecen visibles.",
     noUpcoming: "Nuevas fechas seran publicadas pronto.",
+    composersPrefix: "Obras de ",
     ticketLabel: "Tickets",
+    ticketsSoon: "Próximamente disponibles",
     tidalBtn: "Escuchar en Tidal",
+    mediaPhotos: "Fotos",
     trioTitle: "El Tr\u00edo",
     trioMember1: "Juan Esteban Rend\u00f3n \u2013 viol\u00edn",
     trioMember2: "Camilo Chaparro \u2013 violonchelo",
     trioMember3: "Maria Shykyrinska \u2013 piano",
     trioP1a: "El",
     trioP1b: "fue fundado en Colonia en la primavera de 2019. Desde entonces, la ambici\u00f3n art\u00edstica del grupo ha sido la b\u00fasqueda de un sonido homog\u00e9neo y de una comprensi\u00f3n profunda de la m\u00fasica y su contexto.",
-    trioP2a: "Buscando ampliar sus habilidades y su conocimiento, el tr\u00edo curs\u00f3 y finaliz\u00f3 en 2024 el M\u00e1ster de M\u00fasica de C\u00e1mara en la",
-    trioP2b: ". Su presencia en festivales, concursos y ciclos de conciertos ha fortalecido su perfil profesional.",
-    trioP3a: "En el verano de 2025, el tr\u00edo anunci\u00f3 la incorporaci\u00f3n de su nuevo violinista. Desde entonces, Juan Esteban Rend\u00f3n, Camilo Chaparro y Maria Shykyrinska han debutado con su nueva formaci\u00f3n en el",
-    trioP3b: ".",
-    trioP4: "Los tres m\u00fasicos viven y trabajan en Berl\u00edn.",
+    trioP2a: "Para ampliar sus habilidades y conocimientos, el tr\u00edo curs\u00f3 la Maestr\u00eda de M\u00fasica de C\u00e1mara en la",
+    trioP2b: " y la finaliz\u00f3 en 2024. Sus numerosas actuaciones en festivales, concursos y ciclos de conciertos han fortalecido la profesionalidad del tr\u00edo, entre ellos el festival \u00ab<em>Muziek Biennale Niederrhein</em>\u00bb, el 21.\u00ba Concurso Internacional LAMS (<em>Laboratorio Arte, Musica e Spettacolo</em>) y el ciclo \u00ab<em>Junge Virtuosen</em>\u00bb del Theater M\u00f6nchengladbach.",
+    trioP3: "A principios de 2025, la integrante fundadora Andria Chang decidi\u00f3 seguir su propio camino art\u00edstico. En el verano de ese mismo a\u00f1o, el tr\u00edo anunci\u00f3 la incorporaci\u00f3n de su nuevo violinista.",
+    trioP4a: "Poco despu\u00e9s, Juan-Esteban Rend\u00f3n (viol\u00edn), Camilo Chaparro (violonchelo) y Maria Shykyrinska (piano) debutaron con su nueva formaci\u00f3n en el",
+    trioP4b: ".",
+    trioP4c: "Desde entonces, el tr\u00edo se presenta en concierto con regularidad, centr\u00e1ndose en la elaboraci\u00f3n de programas tem\u00e1ticos y la ampliaci\u00f3n de su repertorio.",
+    trioP5: "Los tres m\u00fasicos viven y trabajan en Berl\u00edn.",
     repertoireTitle: "Repertorio",
     repertoireLead:
       "La lista de repertorio esta disponible para descarga. La orientacion de programa puede adaptarse a cada formato y contexto.",
@@ -208,15 +248,16 @@ const translations = {
     bookingItem4: "Rango de presupuesto",
     bookingItem5: "Opcional: solicitud de programa",
     contactTitle: "Contacto",
-    contactLead: "Consultas generales:",
+    contactLead: "Para consultas generales, por favor escribir a",
     pressTitle: "Prensa",
     pressQuote:
-      "\"...en una interpretacion conmovedora e impecable: autentica plenitud de musica de camara. Aplausos entusiastas, un bis de Schubert y el reiterado deseo de invitar nuevamente al trio.\"",
-    pressSource: "Fuente: Rheinische Post, 27.09.2021",
+      "\u00ab...en una interpretaci\u00f3n conmovedora e impecable \u2013 un \u00e9xtasis absoluto de m\u00fasica de c\u00e1mara. Aplausos entusiastas, un bis de Schubert y el reiterado deseo de invitar al tr\u00edo nuevamente.\u00bb",
+    pressSource: "Rheinische Post",
     pressPolicyNote: "Por motivos de derechos de autor, aqui se muestra solo un extracto.",
     pressFullLink: "Leer critica completa (externo)",
     pressPageLink: "leer m\u00e1s",
     pastMembersTitle: "Homenaje a miembros pasados",
+    andriaChang: "Andria Chang, viol\u00edn, miembro fundadora (2019\u20132025)",
     introMore: "M\u00e1s sobre el tr\u00edo",
     allConcerts: "Todos los conciertos",
     legalLink: "Aviso legal y privacidad",
@@ -224,9 +265,19 @@ const translations = {
     imprintTitle: "Aviso legal",
     imprintBody:
       "Marcador: Agregar aviso legal completo con direccion y datos de responsable.",
-    privacyTitle: "Proteccion de datos",
+    privacyTitle: "Política de privacidad",
     privacyBody:
-      "Marcador: Agregar politica de privacidad para hosting, contenido incrustado y canales de contacto."
+      "Marcador: Agregar politica de privacidad para hosting, contenido incrustado y canales de contacto.",
+    programmeSectionTitle: "Ejemplos de programación",
+    prog1Title: "Ravel y Piazzolla: calle, tango y jazz",
+    prog2Title: "Tristia: las m\u00faltiples caras de la tristeza",
+    prog3Title: "M\u00fasica del romanticismo para fortepiano",
+    composersListTitle: "Lista de compositores",
+    footerHome: "Inicio",
+    footerLocation: "Berl\u00edn, Alemania",
+    footerCopyright: "© 2026 — Todos los derechos reservados",
+    footerLegalNotice: "Aviso legal",
+    footerPrivacy: "Pol\u00edtica de privacidad"
   }
 };
 
@@ -234,26 +285,23 @@ const concerts = {
   upcoming: [
     {
       date: "2026-10-02",
-      time: "19:00?",
+      time: "19:00",
       city: "Berlin",
       venue: "Kapelle am Urban",
-      composers: "Schumann",
+      composers: "Liszt, Debussy, Schumann",
       ticketUrl: "#"
     },
     {
       date: "2026-12-30",
-      time: "19:00?",
       city: "Berlin",
       venue: "Konzerthaus Berlin",
-      composers: "Piazzolla, Ravel",
+      composers: "Debussy, Turina, Piazzolla, Ravel",
       ticketUrl: "#"
     },
     {
       date: "2027-09-04",
-      time: "??:??",
       city: "Plön",
       venue: "Kulturforum Schwimmhalle Schloss Plön",
-      composers: "??",
       ticketUrl: "#"
     }
   ],
@@ -341,13 +389,14 @@ function createCard(concert, lang, showTicket = true) {
   dateTime.textContent = concert.time ? `${formattedDate} · ${concert.time}` : formattedDate;
 
   const city = document.createElement("p");
-  city.textContent = concert.city;
+  const cityName = (lang === "es" && concert.city === "Berlin") ? "Berl\u00edn" : concert.city;
+  city.textContent = cityName;
 
   info.append(title, dateTime, city);
 
   if (concert.composers) {
     const composers = document.createElement("p");
-    composers.textContent = concert.composers;
+    composers.textContent = labels.composersPrefix + concert.composers;
     info.appendChild(composers);
   }
 
@@ -357,16 +406,27 @@ function createCard(concert, lang, showTicket = true) {
     info.appendChild(program);
   }
 
+  const ticketWrap = document.createElement("div");
+  ticketWrap.style.cssText = "display:flex;flex-direction:column;align-items:center;flex-shrink:0;";
+
   const ticket = document.createElement("a");
-  ticket.className = "btn";
   ticket.textContent = labels.ticketLabel;
-  if (concert.ticketUrl && concert.ticketUrl !== "#") {
+  const hasLink = concert.ticketUrl && concert.ticketUrl !== "#";
+  if (hasLink) {
+    ticket.className = "btn";
     ticket.href = concert.ticketUrl;
     ticket.target = "_blank";
     ticket.rel = "noreferrer";
+  } else {
+    ticket.className = "btn btn-unavailable";
+    const soon = document.createElement("p");
+    soon.className = "ticket-soon";
+    soon.textContent = labels.ticketsSoon;
+    ticketWrap.appendChild(soon);
   }
+  ticketWrap.insertBefore(ticket, ticketWrap.firstChild);
 
-  card.append(info, ...(showTicket ? [ticket] : []));
+  card.append(info, ...(showTicket ? [ticketWrap] : []));
   return card;
 }
 
@@ -385,10 +445,8 @@ function renderConcertsLanding(lang) {
 
 function renderConcertsFull(lang) {
   const upcomingEl = document.getElementById("upcoming-list");
-  const archiveEl = document.getElementById("archive-list");
-  if (!upcomingEl || !archiveEl) return;
+  if (!upcomingEl) return;
   upcomingEl.innerHTML = "";
-  archiveEl.innerHTML = "";
   if (!concerts.upcoming.length) {
     const empty = document.createElement("article");
     empty.className = "panel";
@@ -397,35 +455,6 @@ function renderConcertsFull(lang) {
   } else {
     concerts.upcoming.forEach((event) => upcomingEl.appendChild(createCard(event, lang)));
   }
-
-  const byYear = {};
-  concerts.archive
-    .slice()
-    .sort((a, b) => (a.date > b.date ? -1 : 1))
-    .forEach((event) => {
-      const year = event.date.substring(0, 4);
-      if (!byYear[year]) byYear[year] = [];
-      byYear[year].push(event);
-    });
-
-  Object.keys(byYear)
-    .sort((a, b) => b - a)
-    .forEach((year) => {
-      const details = document.createElement("details");
-      details.className = "archive-year";
-
-      const summary = document.createElement("summary");
-      summary.className = "archive-year-summary";
-      summary.textContent = year;
-      details.appendChild(summary);
-
-      const list = document.createElement("div");
-      list.className = "concert-list archive-year-list";
-      byYear[year].forEach((event) => list.appendChild(createCard(event, lang, false)));
-      details.appendChild(list);
-
-      archiveEl.appendChild(details);
-    });
 }
 
 function setActiveNav() {
@@ -440,10 +469,13 @@ function applyLanguage(lang) {
   document.documentElement.lang = safeLang;
   document.querySelectorAll("[data-i18n]").forEach((node) => {
     const key = node.dataset.i18n;
-    if (labels[key]) node.textContent = labels[key];
+    if (labels[key]) node.innerHTML = labels[key];
   });
   document.querySelectorAll(".lang-btn").forEach((button) => {
     button.classList.toggle("is-active", button.dataset.lang === safeLang);
+  });
+  document.querySelectorAll("[data-lang-block]").forEach((node) => {
+    node.hidden = node.dataset.langBlock !== safeLang;
   });
   if (page === "index.html" || page === "") {
     renderConcertsLanding(safeLang);
@@ -451,6 +483,22 @@ function applyLanguage(lang) {
     renderConcertsFull(safeLang);
   }
   storeLanguage(safeLang);
+
+  const pageTitleKey = {
+    "trio.html": "navTrio",
+    "termine.html": "navConcerts",
+    "programme.html": "navRepertoire",
+    "media.html": "navMedia",
+    "kontakt.html": "navContact",
+    "presse.html": "pressTitle",
+    "rechtliches.html": "legalTitle",
+    "datenschutz.html": "privacyTitle",
+    "impressum.html": "imprintTitle"
+  }[page];
+  const siteName = "Synergia Piano Trio";
+  document.title = pageTitleKey && labels[pageTitleKey]
+    ? `${labels[pageTitleKey]} \u00b7 ${siteName}`
+    : siteName;
 }
 
 document.querySelectorAll(".lang-btn").forEach((button) => {
@@ -507,5 +555,51 @@ applyLanguage(initialLang);
     setTimeout(function () {
       window.location.href = href;
     }, FADE_OUT_MS);
+  });
+}());
+
+// Photo lightbox
+(function () {
+  var lightbox = document.getElementById('lightbox');
+  if (!lightbox) return;
+
+  var lbImg = lightbox.querySelector('.lightbox__img');
+  var lbWatermark = lightbox.querySelector('.lightbox__watermark');
+  var lbClose = lightbox.querySelector('.lightbox__close');
+
+  function openLightbox(src, alt, watermark) {
+    lbImg.src = src;
+    lbImg.alt = alt;
+    lbWatermark.textContent = watermark || '';
+    lightbox.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    lbClose.focus();
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('is-open');
+    document.body.style.overflow = '';
+    lbImg.src = '';
+  }
+
+  document.querySelectorAll('[data-lightbox]').forEach(function (item) {
+    function trigger() {
+      var img = item.querySelector('img');
+      openLightbox(img.src, img.alt, item.dataset.watermark);
+    }
+    item.addEventListener('click', trigger);
+    item.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); trigger(); }
+    });
+  });
+
+  lbClose.addEventListener('click', closeLightbox);
+
+  lightbox.addEventListener('click', function (e) {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && lightbox.classList.contains('is-open')) closeLightbox();
   });
 }());

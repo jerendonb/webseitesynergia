@@ -3,11 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Impressum &amp; Datenschutz – Synergia Piano Trio</title>
+    <title>Legal · Synergia Piano Trio</title>
     <meta name="description" content="Impressum und Datenschutz des Synergia Piano Trio." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="assets/styles.css" />
   </head>
   <body>
@@ -18,27 +18,87 @@
     <header class="site-header">
       <a class="brand" href="index.html">Synergia Piano Trio</a>
       <nav class="main-nav" aria-label="Hauptnavigation">
-        <a href="trio.html" data-i18n="navTrio">Trio</a>
+        <div class="nav-item has-dropdown">
+          <a href="trio.html" data-i18n="navTrio">Trio</a>
+          <div class="nav-dropdown">
+            <a href="trio.html#bio" data-i18n="navBio">Bio</a>
+            <a href="trio.html#press" data-i18n="pressTitle">Press</a>
+          </div>
+        </div>
         <a href="termine.html" data-i18n="navConcerts">Concerts</a>
-        <a href="media.html" data-i18n="navMedia">Media</a>
-        <a href="programme.html" data-i18n="navRepertoire">Programs</a>
+        <div class="nav-item has-dropdown">
+          <a href="media.html" data-i18n="navMedia">Media</a>
+          <div class="nav-dropdown">
+            <a href="media.html#video">Video</a>
+            <a href="media.html#audio">Audio</a>
+            <a href="media.html#photos" data-i18n="mediaPhotos">Photos</a>
+          </div>
+        </div>
+        <div class="nav-item has-dropdown">
+          <a href="programme.html" data-i18n="navRepertoire">Programs</a>
+          <div class="nav-dropdown">
+            <a href="programme.html#sample-programs" data-i18n="programmeSectionTitle">Sample programs</a>
+            <a href="programme.html#repertoire" data-i18n="repertoireTitle">Repertoire</a>
+          </div>
+        </div>
         <a href="kontakt.html" data-i18n="navContact">Contact</a>
       </nav>
-      <div class="lang-switch" aria-label="Sprachauswahl">
-        <button class="lang-btn" data-lang="de">DE</button>
-        <button class="lang-btn is-active" data-lang="en">EN</button>
-        <button class="lang-btn" data-lang="es">ES</button>
+      <div class="header-right">
+        <div class="lang-switch" aria-label="Sprachauswahl">
+          <button class="lang-btn" data-lang="de">DE</button>
+          <button class="lang-btn is-active" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="es">ES</button>
+        </div>
+        <a class="instagram-link" href="https://www.instagram.com/synergia_piano_trio/" target="_blank" rel="noopener" aria-label="Instagram">
+          <img src="assets/Instagram_Glyph_Black.png" alt="Instagram" class="instagram-icon" />
+        </a>
       </div>
     </header>
 
     <main>
       <section class="section">
         <div class="grid legal-grid">
-          <article class="panel prose">
+          <article id="impressum" class="panel prose">
             <h3 data-i18n="imprintTitle">Impressum</h3>
-            <p data-i18n="imprintBody">Platzhalter: Vollstandiges Impressum mit ladungsfahiger Anschrift und Kontaktverantwortung erganzen.</p>
+
+            <div data-lang-block="de">
+              <p>Synergia Piano Trio</p>
+              <p>Angaben gemäß § 5 TMG:<br>
+              Juan-Esteban Rendón<br>
+              Roelckestraße 155<br>
+              13086 Berlin</p>
+              <p>Tel: +49 151 75856959<br>
+              E-Mail: <a href="mailto:synergia.piano.trio@gmail.com">synergia.piano.trio@gmail.com</a></p>
+              <p>USt-IdNr.: DE405722133</p>
+              <p>Verantwortlich für den Inhalt: Juan-Esteban Rendón (Anschrift wie oben)</p>
+            </div>
+
+            <div data-lang-block="en" hidden>
+              <p>Synergia Piano Trio</p>
+              <p>Information pursuant to § 5 TMG:<br>
+              Juan-Esteban Rendón<br>
+              Roelckestraße 155<br>
+              13086 Berlin</p>
+              <p>Phone: +49 151 75856959<br>
+              Email: <a href="mailto:synergia.piano.trio@gmail.com">synergia.piano.trio@gmail.com</a></p>
+              <p>VAT ID: DE405722133</p>
+              <p>Responsible for content: Juan-Esteban Rendón (address as above)</p>
+            </div>
+
+            <div data-lang-block="es" hidden>
+              <p>Synergia Piano Trio</p>
+              <p>Datos de acuerdo con § 5 TMG:<br>
+              Juan-Esteban Rendón<br>
+              Roelckestraße 155<br>
+              13086 Berlin</p>
+              <p>Tel.: +49 151 75856959<br>
+              Correo electrónico: <a href="mailto:synergia.piano.trio@gmail.com">synergia.piano.trio@gmail.com</a></p>
+              <p>N.º IVA: DE405722133</p>
+              <p>Responsable del contenido: Juan-Esteban Rendón (dirección indicada arriba)</p>
+            </div>
+
           </article>
-          <article class="panel prose">
+          <article id="datenschutz" class="panel prose">
             <h3 data-i18n="privacyTitle">Datenschutz</h3>
             <p data-i18n="privacyBody">Platzhalter: Datenschutzerklarung fur Hosting, eingebettete Inhalte und Kontaktwege erganzen.</p>
           </article>
@@ -47,8 +107,32 @@
     </main>
 
     <footer class="site-footer">
-      <p>Synergia Piano Trio</p>
-      <p><a href="mailto:synergia.piano.trio@gmail.com">synergia.piano.trio@gmail.com</a></p>
+      <div class="footer-grid">
+        <div class="footer-col">
+          <strong class="footer-brand">Synergia Piano Trio</strong>
+          <a href="mailto:synergia.piano.trio@gmail.com">synergia.piano.trio@gmail.com</a>
+          <span class="footer-social"><a href="https://www.instagram.com/synergia_piano_trio/" target="_blank" rel="noopener">Instagram</a><span aria-hidden="true"> · </span><a href="https://www.youtube.com/@SynergiaPianoTrio" target="_blank" rel="noopener">YouTube</a><span aria-hidden="true"> · </span><a href="https://soundcloud.com/synergia-piano-trio" target="_blank" rel="noopener">SoundCloud</a></span>
+          <span data-i18n="footerLocation">Berlin, Germany</span>
+          <span data-i18n="footerCopyright">© 2026 — All rights reserved</span>
+        </div>
+        <nav class="footer-col footer-col--center" aria-label="Sitemap">
+          <a href="index.html" data-i18n="footerHome">Home</a>
+          <span><a href="trio.html" data-i18n="navTrio">Trio</a><span aria-hidden="true"> · </span><a href="trio.html#bio" data-i18n="navBio">Bio</a><span aria-hidden="true"> · </span><a href="trio.html#press" data-i18n="pressTitle">Press</a></span>
+          <a href="termine.html" data-i18n="navConcerts">Concerts</a>
+          <span><a href="media.html" data-i18n="navMedia">Media</a><span aria-hidden="true"> · </span><a href="media.html#video">Video</a><span aria-hidden="true"> · </span><a href="media.html#audio">Audio</a><span aria-hidden="true"> · </span><a href="media.html#photos" data-i18n="mediaPhotos">Photos</a></span>
+          <span><a href="programme.html" data-i18n="navRepertoire">Programs</a><span aria-hidden="true"> · </span><a href="programme.html#sample-programs" data-i18n="programmeSectionTitle">Sample programs</a><span aria-hidden="true"> · </span><a href="programme.html#repertoire" data-i18n="repertoireTitle">Repertoire</a></span>
+          <a href="kontakt.html" data-i18n="navContact">Contact</a>
+        </nav>
+        <div class="footer-col footer-col--right">
+          <div class="lang-switch footer-lang" aria-label="Language">
+            <button class="lang-btn" data-lang="de">DE</button>
+            <button class="lang-btn is-active" data-lang="en">EN</button>
+            <button class="lang-btn" data-lang="es">ES</button>
+          </div>
+          <a href="impressum.html" data-i18n="footerLegalNotice">Legal Notice</a>
+          <a href="datenschutz.html" data-i18n="footerPrivacy">Privacy Policy</a>
+        </div>
+      </div>
     </footer>
 
     <script src="assets/script.js"></script>

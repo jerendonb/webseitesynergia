@@ -3,11 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Media – Synergia Piano Trio</title>
+    <title>Media · Synergia Piano Trio</title>
     <meta name="description" content="Videos, Audio und Bildmaterial des Synergia Piano Trio." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="assets/styles.css" />
   </head>
   <body>
@@ -18,69 +18,138 @@
     <header class="site-header">
       <a class="brand" href="index.html">Synergia Piano Trio</a>
       <nav class="main-nav" aria-label="Hauptnavigation">
-        <a href="trio.html" data-i18n="navTrio">Trio</a>
+        <div class="nav-item has-dropdown">
+          <a href="trio.html" data-i18n="navTrio">Trio</a>
+          <div class="nav-dropdown">
+            <a href="trio.html#bio" data-i18n="navBio">Bio</a>
+            <a href="trio.html#press" data-i18n="pressTitle">Press</a>
+          </div>
+        </div>
         <a href="termine.html" data-i18n="navConcerts">Concerts</a>
-        <a href="media.html" data-i18n="navMedia">Media</a>
-        <a href="programme.html" data-i18n="navRepertoire">Programs</a>
+        <div class="nav-item has-dropdown">
+          <a href="media.html" data-i18n="navMedia">Media</a>
+          <div class="nav-dropdown">
+            <a href="media.html#video">Video</a>
+            <a href="media.html#audio">Audio</a>
+            <a href="media.html#photos" data-i18n="mediaPhotos">Photos</a>
+          </div>
+        </div>
+        <div class="nav-item has-dropdown">
+          <a href="programme.html" data-i18n="navRepertoire">Programs</a>
+          <div class="nav-dropdown">
+            <a href="programme.html#sample-programs" data-i18n="programmeSectionTitle">Sample programs</a>
+            <a href="programme.html#repertoire" data-i18n="repertoireTitle">Repertoire</a>
+          </div>
+        </div>
         <a href="kontakt.html" data-i18n="navContact">Contact</a>
       </nav>
-      <div class="lang-switch" aria-label="Sprachauswahl">
-        <button class="lang-btn" data-lang="de">DE</button>
-        <button class="lang-btn is-active" data-lang="en">EN</button>
-        <button class="lang-btn" data-lang="es">ES</button>
+      <div class="header-right">
+        <div class="lang-switch" aria-label="Sprachauswahl">
+          <button class="lang-btn" data-lang="de">DE</button>
+          <button class="lang-btn is-active" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="es">ES</button>
+        </div>
+        <a class="instagram-link" href="https://www.instagram.com/synergia_piano_trio/" target="_blank" rel="noopener" aria-label="Instagram">
+          <img src="assets/Instagram_Glyph_Black.png" alt="Instagram" class="instagram-icon" />
+        </a>
       </div>
     </header>
 
     <main>
 
       <!-- Video -->
-      <section class="section">
+      <section class="section" id="video">
         <div class="section-head split-head glass-panel">
           <h2>Video</h2>
         </div>
         <div class="panel media-video-panel">
-          <div class="embed-wrap--ratio">
-            <iframe
-              src="https://www.youtube.com/embed/6Oop1uTcaS0?si=QQJoALY1qy406Cfe"
-              title="Synergia Piano Trio – YouTube"
-              loading="lazy"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-            ></iframe>
+          <div class="video-grid">
+            <div class="embed-wrap--ratio">
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/6Oop1uTcaS0?si=QQJoALY1qy406Cfe"
+                title="Synergia Piano Trio – YouTube"
+                loading="lazy"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div class="embed-wrap--ratio">
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/a1mpo1_VxS8?si=UpwcLOXaoTo20USR"
+                title="Synergia Piano Trio – YouTube"
+                loading="lazy"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
+            </div>
           </div>
         </div>
       </section>
 
       <!-- Audio -->
-      <section class="section">
+      <section class="section" id="audio">
         <div class="section-head split-head glass-panel">
           <h2>Audio</h2>
         </div>
-        <div class="panel tidal-block">
-          <a class="btn" data-i18n="tidalBtn">Listen on Tidal</a>
+        <div class="panel audio-block">
+          <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay; encrypted-media" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A1883603700&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+          <div class="sc-meta"><a href="https://soundcloud.com/synergia-piano-trio" title="Synergia Piano Trio" target="_blank" rel="noreferrer">Synergia Piano Trio</a> · <a href="https://soundcloud.com/synergia-piano-trio/l-v-beethoven-trio-in-b-dur-op97-erzherzog-trio-i-allegro-moderato" title="L. v. Beethoven: Trio in B-Dur, op.97 &quot;Erzherzog Trio&quot;, I. Allegro moderato" target="_blank" rel="noreferrer">L. v. Beethoven: Trio in B-Dur, op.97 "Erzherzog Trio", I. Allegro moderato</a></div>
+
+          <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay; encrypted-media" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A1883604795&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+          <div class="sc-meta"><a href="https://soundcloud.com/synergia-piano-trio" title="Synergia Piano Trio" target="_blank" rel="noreferrer">Synergia Piano Trio</a> · <a href="https://soundcloud.com/synergia-piano-trio/rebecca-clarke-piano-trio-i-moderato-ma-appassionato" title="Rebecca Clarke: Piano Trio, I. Moderato ma appassionato" target="_blank" rel="noreferrer">Rebecca Clarke: Piano Trio, I. Moderato ma appassionato</a></div>
+
+          <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay; encrypted-media" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A1883605824&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+          <div class="sc-meta"><a href="https://soundcloud.com/synergia-piano-trio" title="Synergia Piano Trio" target="_blank" rel="noreferrer">Synergia Piano Trio</a> · <a href="https://soundcloud.com/synergia-piano-trio/r-schumann-phantasiestucke-op88-i-romanze" title="R. Schumann: Phantasiestücke, op.88, I. Romanze" target="_blank" rel="noreferrer">R. Schumann: Phantasiestücke, op.88, I. Romanze</a></div>
         </div>
       </section>
 
       <!-- Fotos -->
-      <section class="section">
+      <section class="section section--full" id="photos">
         <div class="section-head split-head glass-panel">
-          <h2>Fotos</h2>
+          <h2 data-i18n="mediaPhotos">Fotos</h2>
         </div>
         <div class="media-photo-grid">
-          <figure class="media-photo-item panel">
+          <figure class="media-photo-item panel" data-lightbox data-watermark="© Verena Holder" role="button" tabindex="0" aria-label="View photo fullscreen">
+            <img
+              src="assets/signal-2026-06-02-190458.jpeg"
+              alt="Synergia Piano Trio"
+              loading="lazy"
+            />
+            <span class="photo-watermark">© Verena Holder</span>
+          </figure>
+          <figure class="media-photo-item panel" data-lightbox data-watermark="© Juan Carlos Bautista" role="button" tabindex="0" aria-label="View photo fullscreen">
             <img
               src="assets/Synergia_Piano_Trio-32.png"
               alt="Synergia Piano Trio"
               loading="lazy"
             />
+            <span class="photo-watermark">© Juan Carlos Bautista</span>
           </figure>
-          <figure class="media-photo-item panel">
+          <figure class="media-photo-item panel" data-lightbox data-watermark="© Juan Carlos Bautista" role="button" tabindex="0" aria-label="View photo fullscreen">
             <img
-              src="assets/Synergia_Piano_Trio-34.png"
+              src="assets/Synergia_Piano_Trio-37.png"
               alt="Synergia Piano Trio"
               loading="lazy"
             />
+            <span class="photo-watermark">© Juan Carlos Bautista</span>
+          </figure>
+          <figure class="media-photo-item panel" data-lightbox data-watermark="© Juan Carlos Bautista" role="button" tabindex="0" aria-label="View photo fullscreen">
+            <img
+              src="assets/Synergia_Piano_Trio-26.png"
+              alt="Synergia Piano Trio"
+              loading="lazy"
+            />
+            <span class="photo-watermark">© Juan Carlos Bautista</span>
+          </figure>
+          <figure class="media-photo-item panel" data-lightbox data-watermark="© Juan Carlos Bautista" role="button" tabindex="0" aria-label="View photo fullscreen">
+            <img
+              src="assets/Synergia_Piano_Trio-36.png"
+              alt="Synergia Piano Trio"
+              loading="lazy"
+            />
+            <span class="photo-watermark">© Juan Carlos Bautista</span>
           </figure>
         </div>
       </section>
@@ -88,10 +157,42 @@
     </main>
 
     <footer class="site-footer">
-      <p>Synergia Piano Trio</p>
-      <p><a href="mailto:synergia.piano.trio@gmail.com">synergia.piano.trio@gmail.com</a></p>
-      <p class="small"><a href="rechtliches.html" data-i18n="legalLink">Impressum &amp; Datenschutz</a></p>
+      <div class="footer-grid">
+        <div class="footer-col">
+          <strong class="footer-brand">Synergia Piano Trio</strong>
+          <a href="mailto:synergia.piano.trio@gmail.com">synergia.piano.trio@gmail.com</a>
+          <span class="footer-social"><a href="https://www.instagram.com/synergia_piano_trio/" target="_blank" rel="noopener">Instagram</a><span aria-hidden="true"> · </span><a href="https://www.youtube.com/@SynergiaPianoTrio" target="_blank" rel="noopener">YouTube</a><span aria-hidden="true"> · </span><a href="https://soundcloud.com/synergia-piano-trio" target="_blank" rel="noopener">SoundCloud</a></span>
+          <span data-i18n="footerLocation">Berlin, Germany</span>
+          <span data-i18n="footerCopyright">© 2026 — All rights reserved</span>
+        </div>
+        <nav class="footer-col footer-col--center" aria-label="Sitemap">
+          <a href="index.html" data-i18n="footerHome">Home</a>
+          <span><a href="trio.html" data-i18n="navTrio">Trio</a><span aria-hidden="true"> · </span><a href="trio.html#bio" data-i18n="navBio">Bio</a><span aria-hidden="true"> · </span><a href="trio.html#press" data-i18n="pressTitle">Press</a></span>
+          <a href="termine.html" data-i18n="navConcerts">Concerts</a>
+          <span><a href="media.html" data-i18n="navMedia">Media</a><span aria-hidden="true"> · </span><a href="media.html#video">Video</a><span aria-hidden="true"> · </span><a href="media.html#audio">Audio</a><span aria-hidden="true"> · </span><a href="media.html#photos" data-i18n="mediaPhotos">Photos</a></span>
+          <span><a href="programme.html" data-i18n="navRepertoire">Programs</a><span aria-hidden="true"> · </span><a href="programme.html#sample-programs" data-i18n="programmeSectionTitle">Sample programs</a><span aria-hidden="true"> · </span><a href="programme.html#repertoire" data-i18n="repertoireTitle">Repertoire</a></span>
+          <a href="kontakt.html" data-i18n="navContact">Contact</a>
+        </nav>
+        <div class="footer-col footer-col--right">
+          <div class="lang-switch footer-lang" aria-label="Language">
+            <button class="lang-btn" data-lang="de">DE</button>
+            <button class="lang-btn is-active" data-lang="en">EN</button>
+            <button class="lang-btn" data-lang="es">ES</button>
+          </div>
+          <a href="impressum.html" data-i18n="footerLegalNotice">Legal Notice</a>
+          <a href="datenschutz.html" data-i18n="footerPrivacy">Privacy Policy</a>
+        </div>
+      </div>
     </footer>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Photo fullscreen view">
+      <div class="lightbox__inner">
+        <button class="lightbox__close" aria-label="Close">&times;</button>
+        <img class="lightbox__img" src="" alt="" />
+        <span class="lightbox__watermark"></span>
+      </div>
+    </div>
 
     <script src="assets/script.js"></script>
   </body>
