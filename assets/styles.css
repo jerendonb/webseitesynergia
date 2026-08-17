@@ -142,6 +142,43 @@ body {
   position: static;
 }
 
+/* Burger button: hidden until the phone breakpoint turns the nav into an overlay */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 999px;
+  background: rgba(18, 18, 18, 0.22);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+}
+
+.nav-toggle-bar {
+  display: block;
+  width: 20px;
+  height: 1.5px;
+  background: #fff;
+  transition: transform 0.25s ease, opacity 0.2s ease;
+}
+
+body.nav-open .nav-toggle-bar:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+
+body.nav-open .nav-toggle-bar:nth-child(2) {
+  opacity: 0;
+}
+
+body.nav-open .nav-toggle-bar:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+
 .instagram-icon {
   width: 30px;
   height: 30px;
@@ -165,6 +202,8 @@ body {
 .home-page .brand {
   color: #fff;
   text-shadow: 0 2px 18px rgba(0, 0, 0, 0.28);
+  /* Raised floor so small tablets don't render the name smaller than phones do. */
+  font-size: clamp(1.45rem, 2.2vw, 1.65rem);
 }
 
 .main-nav {
@@ -1128,6 +1167,7 @@ blockquote {
 @media (max-width: 900px) {
   main {
     width: min(92vw, 100%);
+    min-width: 0;
     margin-left: auto;
     margin-right: auto;
   }
@@ -1137,13 +1177,30 @@ blockquote {
     justify-items: start;
   }
 
+  /* Lang buttons and the Instagram icon share one row; keeping the icon
+     absolutely positioned would drop it on top of the page content. */
+  .header-right,
+  .home-page .header-right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.9rem;
+  }
+
+  .instagram-link {
+    position: static;
+  }
+
+  /* The homepage header carries only the brand and the controls, so unlike the
+     subpages it keeps the desktop two-column layout at tablet widths. */
   .home-page .site-header {
-    grid-template-columns: 1fr;
     gap: 0.8rem;
   }
 
-  .home-page .lang-switch {
-    justify-self: start;
+  .home-page .header-right {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.75rem;
   }
 
   .main-nav {
@@ -1166,12 +1223,88 @@ blockquote {
 }
 
 @media (max-width: 700px) {
-  .site-header {
-    padding: 0.9rem 1rem;
+  /* The background photo is cropped hard at phone widths, so faces and
+     bright areas land behind body text. Less translucency keeps it legible. */
+  :root {
+    --card: rgba(255, 255, 255, 0.94);
   }
 
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.82);
+  }
+
+  /* Brand and language buttons share the first row, nav gets its own —
+     three stacked rows made the sticky header eat a quarter of the screen.
+     flex-wrap keeps it from breaking on very narrow phones. */
+  .site-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.3rem 0.75rem;
+    padding: 0.55rem 1rem 0.45rem;
+    background: rgba(255, 255, 255, 0.72);
+  }
+
+  body:not(.home-page) .brand {
+    font-size: clamp(0.95rem, 4.4vw, 1.2rem);
+  }
+
+  /* The subpage footer carries an Instagram link, so the header icon can go
+     and leave room for brand + language on one row. The homepage has no
+     footer, so its header icon stays. */
+  body:not(.home-page) .instagram-link {
+    display: none;
+  }
+
+  .lang-btn {
+    padding: 0.3rem 0.55rem;
+    font-size: 0.85rem;
+  }
+
+  /* Hover-only dropdowns can't be opened by touch and spill off the left
+     edge; the footer sitemap links to the same sections. */
+  .nav-dropdown {
+    display: none;
+  }
+
+  /* Homepage: brand on the left, burger + language + Instagram stacked at the
+     right. The header sits above the menu overlay so the burger stays tappable
+     as a close button while the menu is open. */
   .home-page .site-header {
     padding: calc(env(safe-area-inset-top) + 0.9rem) 1rem 0;
+    background: none;
+    align-items: flex-start;
+    z-index: 60;
+  }
+
+  /* Fixed rem size plus an em-based width so the name breaks after "SYNERGIA"
+     and renders at the same size on every phone, not scaled by viewport.
+     7em sits between "PIANO TRIO" (6.5em) and "SYNERGIA PIANO" (9.2em). */
+  .home-page .brand {
+    display: inline-block;
+    max-width: 7em;
+    font-size: 1.6rem;
+    line-height: 1.08;
+  }
+
+  /* margin-left keeps the controls right-aligned even on phones too narrow to
+     hold them beside the brand, where they wrap onto a second row instead of
+     squeezing the language buttons. */
+  .home-page .header-right {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.7rem;
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+
+  .home-page .lang-switch {
+    flex-wrap: nowrap;
+  }
+
+  .nav-toggle {
+    display: flex;
   }
 
   main {
@@ -1186,8 +1319,12 @@ blockquote {
     padding: 1rem;
   }
 
+  /* Full-width second row of the header. The gap is tight enough that the
+     widest label set (Spanish) still fits one row on a 360px phone. */
   .main-nav {
-    gap: 0.65rem 0.85rem;
+    order: 3;
+    flex-basis: 100%;
+    gap: 0.5rem 0.7rem;
   }
 
   .main-nav a,
@@ -1206,29 +1343,80 @@ blockquote {
     padding-bottom: calc(env(safe-area-inset-bottom) + 1rem);
   }
 
+  /* The nav becomes a full-screen overlay opened by the burger button. */
   .home-nav {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.7rem;
-    padding: 0.9rem;
-    border-radius: 26px;
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.6rem;
+    padding: 6rem 1.5rem calc(env(safe-area-inset-bottom) + 2rem);
+    border: 0;
+    border-radius: 0;
+    background: rgba(8, 8, 9, 0.86);
+    backdrop-filter: blur(20px);
+    box-shadow: none;
+    overflow-y: auto;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.28s ease, visibility 0s ease 0.28s;
+  }
+
+  body.nav-open .home-nav {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.28s ease, visibility 0s ease;
+  }
+
+  body.nav-open {
+    overflow: hidden;
   }
 
   .home-nav > a,
   .home-nav-item > a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 52px;
-    padding: 0.85rem 0.8rem;
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.06);
-    font-size: 1.05rem;
+    display: block;
+    min-height: 0;
+    padding: 0.55rem 0.6rem;
+    font-size: 1.7rem;
+    letter-spacing: 0.14em;
+    text-align: center;
   }
 
+  /* column-reverse puts the section link above its sub-links, which come
+     first in the markup because on desktop they float above the pill. */
   .home-nav-item {
-    display: contents;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 0.1rem;
+  }
+
+  /* Sub-links are hover-revealed on desktop; inside the overlay they are
+     always visible, since touch has no hover. */
+  .home-nav-subs {
+    position: static;
+    transform: none;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.2rem 1.1rem;
+    padding-bottom: 0;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Long label sets (Spanish) wrap onto a second line, which would leave a
+     separator dangling at the end of a row. */
+  .home-nav-sep {
+    display: none;
+  }
+
+  .home-nav .home-nav-subs a {
+    font-size: 1rem;
+    padding: 0.4rem 0.2rem;
   }
 
   .grid,
@@ -1245,6 +1433,13 @@ blockquote {
     margin-top: 0.6rem;
   }
 
+  .press-teaser,
+  .tidal-block {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
   .trio-layout {
     grid-template-columns: 1fr;
   }
@@ -1259,6 +1454,7 @@ blockquote {
 
   .site-footer {
     padding: 0.9rem 1rem calc(env(safe-area-inset-bottom) + 0.85rem);
+    background: rgba(255, 255, 255, 0.8);
   }
 
   .footer-grid {
@@ -1281,15 +1477,6 @@ blockquote {
 
   .lang-switch {
     flex-wrap: wrap;
-  }
-
-  .home-nav {
-    grid-template-columns: 1fr;
-  }
-
-  .home-nav > a,
-  .home-nav-item > a {
-    min-height: 50px;
   }
 
   .section-head h2,

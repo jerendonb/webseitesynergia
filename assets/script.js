@@ -508,6 +508,36 @@ setActiveNav();
 const initialLang = getInitialLanguage();
 applyLanguage(initialLang);
 
+// Burger menu (phone breakpoint on the homepage)
+(function () {
+  const toggle = document.querySelector(".nav-toggle");
+  const nav = document.getElementById("home-nav");
+  if (!toggle || !nav) return;
+
+  function setOpen(open) {
+    document.body.classList.toggle("nav-open", open);
+    toggle.setAttribute("aria-expanded", String(open));
+  }
+
+  toggle.addEventListener("click", () => {
+    setOpen(!document.body.classList.contains("nav-open"));
+  });
+
+  nav.addEventListener("click", (e) => {
+    if (e.target.closest("a")) setOpen(false);
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") setOpen(false);
+  });
+
+  // Rotating to landscape can cross back into the desktop layout, where the
+  // overlay no longer exists and the open state would strand body scrolling.
+  window.matchMedia("(min-width: 701px)").addEventListener("change", (e) => {
+    if (e.matches) setOpen(false);
+  });
+}());
+
 // Dip-to-black transition: homepage ↔ subpage
 (function () {
   const veil = document.getElementById("page-veil");

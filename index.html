@@ -24,6 +24,17 @@
     <header class="site-header">
       <a class="brand" href="index.html">Synergia Piano Trio</a>
       <div class="header-right">
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-label="Menu"
+          aria-expanded="false"
+          aria-controls="home-nav"
+        >
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
         <div class="lang-switch" aria-label="Sprachauswahl">
           <button class="lang-btn" data-lang="de">DE</button>
           <button class="lang-btn is-active" data-lang="en">EN</button>
@@ -38,7 +49,7 @@
     <main>
       <section id="start" class="home-hero" aria-label="Synergia Piano Trio">
         <div class="home-hero-overlay">
-          <nav class="main-nav home-nav" aria-label="Hauptnavigation">
+          <nav id="home-nav" class="main-nav home-nav" aria-label="Hauptnavigation">
             <div class="home-nav-item">
               <div class="home-nav-subs">
                 <a href="trio.html#bio" data-i18n="navBio">Bio</a>
