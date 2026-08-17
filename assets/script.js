@@ -284,8 +284,7 @@ const translations = {
 const concerts = {
   upcoming: [
     {
-      date: "2026-10-02",
-      time: "19:00",
+      date: "2026-11-01",
       city: "Berlin",
       venue: "Kapelle am Urban",
       composers: "Liszt, Debussy, Schumann",
@@ -362,7 +361,7 @@ function getInitialLanguage() {
 function formatDate(value, lang) {
   if (/^\d{4}-\d{2}-\d{2}$/.test(value)) {
     const date = new Date(`${value}T00:00:00`);
-    return new Intl.DateTimeFormat(lang, { day: "2-digit", month: "long", year: "numeric" }).format(date);
+    return new Intl.DateTimeFormat(lang, { weekday: "long", day: "2-digit", month: "long", year: "numeric" }).format(date);
   }
 
   if (/^\d{4}-\d{2}$/.test(value)) {
