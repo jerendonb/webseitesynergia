@@ -84,7 +84,7 @@ Stand: 16.03.2026
 - Kein Formular
 - Kontakt ausschliesslich per E-Mail
 - Klarer CTA mit bookingrelevanter Information
-- E-Mail: synergia.piano.trio@gmail.com
+- E-Mail: contact@synergiapianotrio.com
 
 ## Kontakt
 
@@ -148,7 +148,7 @@ Seit Sommer 2025 musiziert das Trio in der Besetzung Juan-Esteban Rendon (Violin
 
 Fur Konzertanfragen, Festivalanfragen und Kooperationen kontaktieren Sie bitte:
 
-synergia.piano.trio@gmail.com
+contact@synergiapianotrio.com
 
 Bitte senden Sie nach Moglichkeit folgende Informationen mit:
 
@@ -164,7 +164,7 @@ Die aktuelle Repertoireliste steht als Download bereit.
 
 Allgemeine Anfragen:
 
-synergia.piano.trio@gmail.com
+contact@synergiapianotrio.com
 
 Antworten erfolgen zeitnah in Deutsch oder Englisch.
 

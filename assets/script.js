@@ -154,7 +154,7 @@ const translations = {
     bookingItem4: "Budget frame",
     bookingItem5: "Optional: program request",
     contactTitle: "Contact",
-    contactLead: "For general inquiries, please contact",
+    contactLead: "For general inquiries, please email us at",
     pressTitle: "Press",
     pressQuote:
       "\u201c...in a stirring, flawless rendition - perfect chamber music bliss. Enthusiastic applause, a Schubert encore and the often-expressed wish to invite the trio again.\u201d",
