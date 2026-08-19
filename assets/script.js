@@ -3,7 +3,6 @@ const translations = {
     navTrio: "Trio",
     navBio: "Biografie",
     navRepertoire: "Programme",
-    programmeSectionTitle: "Programmbeispiele",
     navConcerts: "Termine",
     navMedia: "Media",
     navBooking: "Booking",
@@ -175,7 +174,6 @@ const translations = {
     privacyTitle: "Privacy Policy",
     privacyBody:
       "Placeholder: Add privacy policy for hosting, embedded content and contact channels.",
-    programmeSectionTitle: "Sample programs",
     prog1Title: "Ravel and Piazzolla: Street, Tango, and Jazz",
     prog2Title: "Tristia: The Many Faces of Sadness",
     prog3Title: "Romantic Music for Fortepiano",
@@ -268,7 +266,6 @@ const translations = {
     privacyTitle: "Política de privacidad",
     privacyBody:
       "Marcador: Agregar politica de privacidad para hosting, contenido incrustado y canales de contacto.",
-    programmeSectionTitle: "Ejemplos de programación",
     prog1Title: "Ravel y Piazzolla: calle, tango y jazz",
     prog2Title: "Tristia: las m\u00faltiples caras de la tristeza",
     prog3Title: "M\u00fasica del romanticismo para fortepiano",
@@ -295,7 +292,8 @@ const concerts = {
       city: "Berlin",
       venue: "Konzerthaus Berlin",
       composers: "Debussy, Turina, Piazzolla, Ravel",
-      ticketUrl: "#"
+      ticketUrl:
+        "https://www.classictic.com/en/city/berlin-t10/piazzollas-four-seasons-festive-new-years-eve-concert-at-konzerthaus-berlin/117686/?amount=1&category=740351"
     },
     {
       date: "2027-09-04",
@@ -406,7 +404,7 @@ function createCard(concert, lang, showTicket = true) {
   }
 
   const ticketWrap = document.createElement("div");
-  ticketWrap.style.cssText = "display:flex;flex-direction:column;align-items:center;flex-shrink:0;";
+  ticketWrap.className = "ticket-cell";
 
   const ticket = document.createElement("a");
   ticket.textContent = labels.ticketLabel;

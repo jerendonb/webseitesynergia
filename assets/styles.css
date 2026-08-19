@@ -29,14 +29,31 @@ body {
   font-weight: 400;
   line-height: 1.65;
   color: var(--ink);
-  background: url("Synergia_Piano_Trio-46(cropped).png") center top / cover no-repeat fixed;
+  background: var(--bg);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
+/* The page image is a fixed layer of its own rather than a background with
+   attachment: fixed. With the fixed attachment, Chrome stops repainting the
+   backdrop-filtered footer while the page scrolls, so on pages long enough to
+   scroll the footer stayed blank until a hover forced a redraw. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background: url("Synergia_Piano_Trio-46(cropped).png") center top / cover no-repeat;
+  pointer-events: none;
+}
+
 .home-page {
   background: #111;
+}
+
+.home-page::before {
+  content: none;
 }
 
 .home-page.overlay-light {
@@ -99,6 +116,7 @@ body {
   align-items: center;
   padding: 0.9rem clamp(1rem, 3vw, 3rem) 0.5rem;
   backdrop-filter: blur(6px) saturate(1.2);
+  -webkit-backdrop-filter: blur(6px) saturate(1.2);
   background: rgba(255, 255, 255, 0.10);
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
@@ -601,6 +619,16 @@ h1 {
   background: rgba(180, 180, 180, 0.35);
 }
 
+/* Fixed width so the button sits in the same place whether or not the
+   "tickets soon" note is present, and regardless of its length per language. */
+.ticket-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  width: 9.5rem;
+}
+
 .ticket-soon {
   margin-top: 0.35rem;
   font-size: 0.9rem;
@@ -1074,11 +1102,14 @@ blockquote {
   font-size: 1rem;
 }
 
+/* No backdrop-filter here on purpose: Chrome failed to repaint the filtered
+   layer when the page scrolled or when the language switch rewrote the footer
+   text, leaving the footer blank until a hover forced a redraw. A slightly
+   more opaque background gives nearly the same look without that risk. */
 .site-footer {
   padding: clamp(0.65rem, 1.4vw, 0.9rem) clamp(1rem, 3vw, 3rem) calc(env(safe-area-inset-bottom) + clamp(0.6rem, 1.4vw, 0.85rem));
   color: var(--muted);
-  background: rgba(255, 255, 255, 0.55);
-  backdrop-filter: blur(6px);
+  background: rgba(255, 255, 255, 0.78);
   font-size: 0.88rem;
   letter-spacing: 0.02em;
   border-top: 1px solid var(--line);
@@ -1462,6 +1493,15 @@ blockquote {
 
   .card-row .btn {
     margin-top: 0.6rem;
+  }
+
+  .ticket-cell {
+    align-items: flex-start;
+    width: auto;
+  }
+
+  .ticket-soon {
+    text-align: left;
   }
 
   .press-teaser,
