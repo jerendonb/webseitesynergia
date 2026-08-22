@@ -1,0 +1,1176 @@
+/* ==========================================================================
+   Synergia Piano Trio — mobile scroll site
+
+   mobile.html loads this file *instead of* styles.css, not alongside it, so
+   every rule the page needs lives here. That includes the classes that
+   assets/script.js generates at runtime (.panel, .card-row, .btn, .lightbox…)
+   and the design tokens, which are duplicated from styles.css on purpose:
+   the two stylesheets are free to diverge.
+   ========================================================================== */
+
+:root {
+  --bg: #ece8df;
+  --ink: #0f0f10;
+  --muted: #4a4a4d;
+  --card: rgba(255, 255, 255, 0.94);
+  --line: rgba(15, 15, 16, 0.16);
+  --accent: #173f33;
+  --accent-ink: #e8e4da;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.09);
+  --serif: "Cormorant Garamond", Georgia, serif;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  /* Anchor jumps have to clear the fixed burger. */
+  scroll-padding-top: calc(var(--safe-top) + 4.5rem);
+}
+
+body {
+  margin: 0;
+  /* Containing block for the absolutely positioned hero header. */
+  position: relative;
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--bg);
+  overflow-x: hidden;
+}
+
+/* Same subpage photo as the desktop site, unfiltered. `left top` keeps the
+   left edge of the picture on the left edge of the phone; `cover` fills the
+   rest by cropping the right. The layer is fixed rather than
+   background-attachment: fixed, which made Chrome skip bar repaints. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  /* A small pan off the left-aligned close-up: the next column in the
+     picture comes into view, and the musicians on the right stay off-screen. */
+  background: url("Synergia_Piano_Trio-46(cropped).png") 20% top / cover no-repeat;
+  pointer-events: none;
+}
+
+/* [hidden] drives the DE/EN/ES blocks in the programme lists, so it has to
+   win against any display rule below. */
+[hidden] {
+  display: none !important;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* ── Hero ───────────────────────────────────────────────────────────────── */
+
+/* hero.jpg is the centre strip of Synergia_Piano_Trio-41.png, pre-cropped at
+   native resolution: on a portrait phone `cover` only ever shows that strip,
+   so cropping it up front costs no detail and saves ~5 MB. */
+.m-hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  min-height: 100svh;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.42) 0%,
+      rgba(0, 0, 0, 0.14) 32%,
+      rgba(0, 0, 0, 0.5) 64%,
+      #000 88%,
+      #000 100%
+    ),
+    url("mobile/hero.jpg") center center / cover no-repeat,
+    #000;
+}
+
+.m-hero::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 4px;
+  background: #000;
+  pointer-events: none;
+}
+
+@supports not (min-height: 100svh) {
+  .m-hero {
+    min-height: 100vh;
+  }
+}
+
+/* Hairline stem + a small V. It sits in the black at the foot of the hero so
+   it reads as an invitation to keep going, not as chrome on the photograph. */
+.m-scroll-cue {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin-bottom: calc(var(--safe-bottom) + 1.15rem);
+  color: rgba(255, 255, 255, 0.78);
+  text-decoration: none;
+  animation: m-bob 2.6s ease-in-out infinite;
+}
+
+.m-scroll-cue::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-right: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+  transform: rotate(45deg);
+}
+
+@keyframes m-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(7px); }
+}
+
+/* Continues the hero's black and lets the subpage photo emerge underneath.
+   Solid black + an alpha mask, not a colour gradient to transparent: Chrome's
+   default oklab interpolation turns `#000 → transparent` into a grey hairline. */
+.m-bridge {
+  height: clamp(10rem, 32vw, 16rem);
+  margin-top: -2px;
+  background: #000;
+  -webkit-mask-image: linear-gradient(180deg, #fff 0%, #fff 18%, transparent 100%);
+  mask-image: linear-gradient(180deg, #fff 0%, #fff 18%, transparent 100%);
+  mask-mode: alpha;
+  pointer-events: none;
+}
+
+.m-bridge + main .m-section:first-child {
+  padding-top: 1.2rem;
+}
+
+/* ── Hero header: brand, burger, Instagram (mirrors index.html on a phone) ─ */
+
+.site-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  padding: calc(var(--safe-top) + 1.45rem) 1rem 0;
+  pointer-events: none;
+}
+
+.site-header .brand {
+  pointer-events: auto;
+}
+
+body.nav-open .site-header {
+  visibility: hidden;
+}
+
+/* 6em sits between "SYNERGIA" (5.4em) and "PIANO TRIO" (6.5em), so the name
+   breaks into the same three lines on every phone, and the widest line still
+   clears the burger on a 320px screen. */
+.brand {
+  display: block;
+  max-width: 6em;
+  margin: 0;
+  font-size: 2.1rem;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.brand a {
+  color: #fff;
+  text-decoration: none;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.28);
+}
+
+.header-right {
+  position: fixed;
+  top: calc(var(--safe-top) + 1.45rem);
+  right: 1rem;
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.6rem;
+}
+
+.nav-toggle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 999px;
+  background: rgba(18, 18, 18, 0.22);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  cursor: pointer;
+}
+
+.nav-toggle-bar {
+  display: block;
+  width: 20px;
+  height: 1.5px;
+  background: #fff;
+  transition: transform 0.25s ease, opacity 0.2s ease;
+}
+
+body.nav-open .nav-toggle-bar:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+
+body.nav-open .nav-toggle-bar:nth-child(2) {
+  opacity: 0;
+}
+
+body.nav-open .nav-toggle-bar:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+
+/* Matching the burger's width centres the icon under it rather than lining
+   up their right edges. */
+.instagram-link {
+  display: flex;
+  justify-content: center;
+  width: 44px;
+  line-height: 0;
+}
+
+.instagram-icon {
+  width: 30px;
+  height: 30px;
+  opacity: 0.85;
+  /* The glyph is white; the shadow keeps it visible once the dark hero
+     has scrolled away. */
+  filter: drop-shadow(0 1px 6px rgba(0, 0, 0, 0.55));
+}
+
+/* ── Burger menu ────────────────────────────────────────────────────────── */
+
+.home-nav {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  /* Without nowrap a column that runs out of height breaks into a second
+     column and slides the links under the header controls. */
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1.6rem;
+  /* The top padding clears the burger, Instagram icon and language row, so
+     the links stay centred in the space below them instead of underneath. */
+  padding: calc(var(--safe-top) + 10rem) 1.5rem calc(var(--safe-bottom) + 2rem);
+  background: rgba(8, 8, 9, 0.86);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  overflow-y: auto;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.28s ease, visibility 0s ease 0.28s;
+}
+
+body.nav-open .home-nav {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.28s ease, visibility 0s ease;
+}
+
+body.nav-open {
+  overflow: hidden;
+}
+
+.home-nav a {
+  color: #fff;
+  text-decoration: none;
+  font-family: var(--serif);
+}
+
+.home-nav-brand {
+  position: absolute;
+  top: calc(var(--safe-top) + 1.45rem);
+  left: 1rem;
+  z-index: 1;
+  text-align: left;
+}
+
+.home-nav > a:not(.home-nav-brand),
+.home-nav-item > a {
+  display: block;
+  padding: 0.55rem 0.6rem;
+  font-size: 1.7rem;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/* column-reverse puts the section link above its sub-links, which come first
+   in the markup because on desktop they float above the pill. */
+.home-nav-item {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  align-self: center;
+  gap: 0.1rem;
+}
+
+.home-nav-subs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.2rem 1.1rem;
+}
+
+.home-nav-subs--media {
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 0.15rem;
+}
+
+.home-nav-subrow {
+  display: flex;
+  justify-content: center;
+  gap: 1.1rem;
+}
+
+.home-nav .home-nav-subs a {
+  padding: 0.4rem 0.2rem;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 1rem;
+  line-height: 1;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+/* Shorter phones: tighten the menu so the whole list still fits on screen. */
+@media (max-height: 720px) {
+  .home-nav {
+    gap: 1.1rem;
+  }
+
+  .home-nav > a:not(.home-nav-brand),
+  .home-nav-item > a {
+    font-size: 1.5rem;
+    padding: 0.4rem 0.5rem;
+  }
+
+  .home-nav .home-nav-subs a {
+    font-size: 0.95rem;
+    padding: 0.3rem 0.2rem;
+  }
+}
+
+/* Phone in landscape: too little height to centre anything, so the menu starts
+   under the header controls and scrolls. */
+@media (max-height: 520px) {
+  .home-nav {
+    justify-content: flex-start;
+    gap: 0.8rem;
+    padding-top: calc(var(--safe-top) + 5.5rem);
+  }
+
+  .home-nav > a:not(.home-nav-brand),
+  .home-nav-item > a {
+    font-size: 1.3rem;
+    padding: 0.3rem 0.5rem;
+  }
+}
+
+/* ── Language switch (always sits on a dark backdrop) ───────────────────── */
+
+.lang-switch {
+  display: inline-flex;
+  gap: 0.3rem;
+}
+
+.lang-btn {
+  min-width: 2.6rem;
+  min-height: 2.1rem;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  background: rgba(18, 18, 18, 0.28);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #fff;
+  font-family: var(--serif);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+}
+
+.lang-btn.is-active {
+  background: rgba(255, 255, 255, 0.94);
+  color: #111;
+}
+
+/* In the header the languages belong to the menu: they hang below the
+   Instagram icon and appear only while the burger is open. Taking them out of
+   the flow keeps that column as narrow as the burger, which is what leaves
+   the row enough width for the three-line name. */
+.header-right .lang-switch {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 0.75rem;
+  flex-wrap: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0s ease 0.25s;
+}
+
+body.nav-open .header-right .lang-switch {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0s ease;
+}
+
+/* ── Section shell ──────────────────────────────────────────────────────── */
+
+/* Subpages (Trio / Bio / Press): same photo, burger and footer as the
+   scroll site, without the hero. Extra top padding clears the three-line
+   name and the fixed burger. */
+body.m-sub::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  height: calc(var(--safe-top) + 8.5rem);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, transparent 100%);
+  pointer-events: none;
+}
+
+body.m-sub {
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+}
+
+@supports not (min-height: 100svh) {
+  body.m-sub {
+    min-height: 100vh;
+  }
+}
+
+body.m-sub main {
+  flex: 1 0 auto;
+  padding-top: calc(var(--safe-top) + 6.8rem);
+}
+
+.m-section {
+  padding: clamp(2.6rem, 10vw, 4rem) 1.1rem;
+  scroll-margin-top: calc(var(--safe-top) + 1rem);
+}
+
+.m-section-title {
+  display: inline-block;
+  margin: 0 0 1.4rem;
+  padding: 0.3rem 0.85rem 0.4rem;
+  background: rgba(255, 255, 255, 0.62);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.30);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.07);
+  font-size: clamp(1.85rem, 8.5vw, 2.4rem);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+  scroll-margin-top: calc(var(--safe-top) + 1rem);
+}
+
+.m-section-title ~ .m-section-title {
+  margin-top: 2.4rem;
+}
+
+.m-subtitle {
+  margin: 2.2rem 0 0.9rem;
+  scroll-margin-top: calc(var(--safe-top) + 1rem);
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ── Panels, buttons ────────────────────────────────────────────────────── */
+
+.m-panel,
+.panel {
+  border: 1px solid var(--line);
+  background: var(--card);
+  box-shadow: var(--shadow);
+  padding: 1rem;
+}
+
+.m-panel p {
+  margin: 0 0 0.9rem;
+}
+
+.m-panel p:last-child {
+  margin-bottom: 0;
+}
+
+.trio-members {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.4rem;
+}
+
+.trio-members li + li {
+  margin-top: 0.25rem;
+}
+
+.m-panel blockquote {
+  margin: 0 0 0.6rem;
+  font-size: 1.25rem;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.55;
+}
+
+.school-name,
+.konzerthaus-name {
+  font-style: italic;
+}
+
+:lang(de) .school-name,
+:lang(de) .konzerthaus-name {
+  font-style: normal;
+}
+
+:lang(es) .ensemble-name {
+  font-style: italic;
+}
+
+.small {
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+.m-press-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 0.6rem;
+}
+
+.m-press-meta .small {
+  margin: 0;
+  min-width: 0;
+}
+
+.m-press-meta .btn {
+  flex: 0 0 auto;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.9rem;
+  padding: 0.6rem 1.15rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.6);
+  color: var(--ink);
+  text-decoration: none;
+  font-family: var(--serif);
+  font-size: 1.02rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.btn-unavailable {
+  border-color: rgba(15, 15, 16, 0.12);
+  background: rgba(180, 180, 180, 0.35);
+  color: #888;
+  pointer-events: none;
+}
+
+/* ── Concert cards (markup built by createCard() in assets/script.js) ───── */
+
+.concert-list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.75rem;
+}
+
+.card-row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.9rem;
+}
+
+.card-info {
+  min-width: 0;
+}
+
+.card-info h3 {
+  margin: 0 0 0.35rem;
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.card-info p {
+  margin: 0.15rem 0;
+  color: var(--muted);
+}
+
+.ticket-cell {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.ticket-soon {
+  margin: 0;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--muted);
+  text-align: left;
+  flex: 1;
+  min-width: 0;
+}
+
+.more-concerts-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+/* ── Media: story highlights ────────────────────────────────────────────── */
+
+.story-rail {
+  display: flex;
+  gap: 0.7rem;
+  width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+}
+
+.story-rail::-webkit-scrollbar {
+  display: none;
+}
+
+.story-card {
+  position: relative;
+  flex: 0 0 78%;
+  aspect-ratio: 9 / 16;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 14px;
+  background: #000;
+  cursor: pointer;
+  scroll-snap-align: start;
+  font: inherit;
+}
+
+.story-card video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #000;
+  pointer-events: none;
+}
+
+.story-card-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: rgba(12, 12, 12, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  transition: opacity 0.2s ease;
+}
+
+.story-card-play::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 54%;
+  transform: translate(-50%, -50%);
+  border-style: solid;
+  border-width: 10px 0 10px 17px;
+  border-color: transparent transparent transparent #fff;
+}
+
+.story-card.is-playing .story-card-play {
+  opacity: 0;
+}
+
+/* ── Media: video ───────────────────────────────────────────────────────── */
+
+.m-videos {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.9rem;
+}
+
+/* Click-to-load facade: a thumbnail stands in until tapped, so the page
+   doesn't pull ~1 MB of YouTube player per video over a phone connection
+   (and nothing reaches Google until the visitor asks for it). */
+.m-video {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: #111;
+}
+
+button.m-video {
+  cursor: pointer;
+}
+
+.m-video img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  /* hqdefault is 4:3 with letterbox bars baked in; cover crops them off. */
+  object-fit: cover;
+  display: block;
+}
+
+.m-video-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: rgba(12, 12, 12, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.m-video-play::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 54%;
+  transform: translate(-50%, -50%);
+  border-style: solid;
+  border-width: 10px 0 10px 17px;
+  border-color: transparent transparent transparent #fff;
+}
+
+.m-video iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+/* ── Media: audio ───────────────────────────────────────────────────────── */
+
+/* minmax(0, 1fr) rather than the default auto track, and min-width: 0 on the
+   rows: an auto track won't shrink below its content's min-content width, and
+   .sc-meta is nowrap, so one long track title would otherwise stretch the
+   whole page past the viewport. */
+.m-audio {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.1rem;
+}
+
+.m-audio > div {
+  min-width: 0;
+}
+
+.m-audio iframe {
+  display: block;
+  width: 100%;
+  height: 166px;
+  border: 0;
+}
+
+.sc-meta {
+  margin: 0 0 0.35rem;
+  font-family: Interstate, "Lucida Grande", Verdana, sans-serif;
+  font-size: 10px;
+  font-weight: 100;
+  color: #9a9a9a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sc-meta a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ── Media: photo gallery (swipe) ───────────────────────────────────────── */
+
+.m-gallery {
+  display: flex;
+  gap: 0.7rem;
+  /* Break out of the section padding so the strip runs edge to edge. */
+  margin-inline: -1.1rem;
+  padding: 0.25rem 1.1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.m-gallery::-webkit-scrollbar {
+  display: none;
+}
+
+/* Under a full viewport width so the next photo peeks in and the strip
+   reads as swipeable without needing arrows or dots. */
+.m-gallery figure {
+  position: relative;
+  flex: 0 0 82%;
+  /* The set mixes landscape and portrait originals; one ratio for every slide
+     keeps the strip from jumping in height as you swipe. The lightbox shows
+     the uncropped image. */
+  aspect-ratio: 4 / 5;
+  margin: 0;
+  scroll-snap-align: center;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  background: var(--card);
+  cursor: zoom-in;
+}
+
+.m-gallery img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-watermark {
+  position: absolute;
+  right: 0.6rem;
+  bottom: 0.45rem;
+  font-size: 0.72rem;
+  font-style: italic;
+  letter-spacing: 0.03em;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.75);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.85);
+  pointer-events: none;
+}
+
+.m-gallery-hint {
+  margin: 0.7rem 0 0;
+  font-size: 0.88rem;
+  font-style: italic;
+  color: var(--muted);
+}
+
+/* ── Programmes & repertoire ────────────────────────────────────────────── */
+
+.m-details {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.6rem;
+}
+
+.archive-year {
+  border: 1px solid var(--line);
+  background: var(--card);
+  box-shadow: var(--shadow);
+}
+
+.archive-year-summary {
+  display: flex;
+  align-items: baseline;
+  gap: 0.55rem;
+  padding: 0.85rem 0.95rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.3;
+  list-style: none;
+  cursor: pointer;
+  user-select: none;
+}
+
+.archive-year-summary::-webkit-details-marker {
+  display: none;
+}
+
+.archive-year-summary::before {
+  content: "\203A";
+  flex-shrink: 0;
+  font-size: 1.2em;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+.archive-year[open] > .archive-year-summary::before {
+  transform: rotate(90deg);
+}
+
+.archive-year-list {
+  padding: 0 0.95rem 1rem;
+}
+
+.archive-year-list ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.archive-year-list li {
+  margin-bottom: 0.3rem;
+  line-height: 1.5;
+}
+
+.small {
+  margin: 0.9rem 0 0;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+/* ── Contact ────────────────────────────────────────────────────────────── */
+
+.m-contact-mail {
+  width: 100%;
+  /* The address is long enough to overflow a 320px phone at body size. */
+  font-size: 0.98rem;
+  word-break: break-word;
+}
+
+/* ── Footer ─────────────────────────────────────────────────────────────── */
+
+.m-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem 1.1rem calc(var(--safe-bottom) + 1.6rem);
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.8);
+  font-size: 1.12rem;
+  letter-spacing: 0.02em;
+  border-top: 1px solid var(--line);
+}
+
+.m-footer a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.m-footer a:hover,
+.m-footer a:focus-visible {
+  color: var(--ink);
+}
+
+.m-footer-brand {
+  display: block;
+  margin-bottom: 0.1rem;
+  color: inherit;
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.m-footer-row {
+  margin: 0;
+  font-size: 1.28rem;
+  line-height: 1.7;
+}
+
+.m-footer .lang-switch {
+  margin-top: 0.85rem;
+}
+
+.m-footer .lang-btn {
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.45);
+  color: var(--ink);
+  backdrop-filter: none;
+}
+
+.m-footer .lang-btn.is-active {
+  background: var(--ink);
+  color: #fff;
+}
+
+.m-footer-legal {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.45rem 1.2rem;
+  width: 100%;
+  margin-top: 1.15rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+  font-size: 0.92rem;
+}
+
+/* ── Lightbox (driven by assets/script.js) ──────────────────────────────── */
+
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.94);
+}
+
+.lightbox.is-open {
+  display: flex;
+}
+
+.lightbox__inner {
+  position: relative;
+  max-width: 94vw;
+  max-height: 82vh;
+  line-height: 0;
+}
+
+.lightbox__img {
+  display: block;
+  max-width: 94vw;
+  max-height: 82vh;
+  object-fit: contain;
+}
+
+.lightbox__watermark {
+  position: absolute;
+  right: 0.7rem;
+  bottom: 0.55rem;
+  font-family: var(--serif);
+  font-size: 0.85rem;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.75);
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.9);
+  pointer-events: none;
+  line-height: 1;
+}
+
+.lightbox__close {
+  position: absolute;
+  top: -3rem;
+  right: -0.4rem;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* ── Scroll reveal ──────────────────────────────────────────────────────── */
+
+/* Scoped to .js so a scripting failure leaves the content visible rather than
+   stranding every section at opacity 0. */
+.js .m-reveal {
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.js .m-reveal.is-in {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .js .m-reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Opened on a desktop browser (a shared link, or the escape hatch): hold the
+   layout to a phone-sized column instead of stretching it across the window. */
+@media (min-width: 720px) {
+  body {
+    max-width: 480px;
+    margin-inline: auto;
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.18);
+  }
+
+  /* Fixed controls sit on the 480px column, not the full window. */
+  .header-right {
+    right: calc(50% - 240px + 1rem);
+  }
+
+  /* Fixed, so unlike the header it doesn't inherit the narrowed body width. */
+  .home-nav {
+    left: 50%;
+    right: auto;
+    width: 480px;
+    transform: translateX(-50%);
+  }
+
+  body.m-sub::after {
+    left: 50%;
+    right: auto;
+    width: 480px;
+    transform: translateX(-50%);
+  }
+}

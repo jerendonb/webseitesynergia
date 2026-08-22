@@ -90,7 +90,11 @@ const translations = {
     footerLocation: "Berlin, Deutschland",
     footerCopyright: "© 2026 — Alle Rechte vorbehalten",
     footerLegalNotice: "Impressum",
-    footerPrivacy: "Datenschutz"
+    footerPrivacy: "Datenschutz",
+    galleryHint: "Wischen für mehr, tippen zum Vergrößern.",
+    storyHighlights: "Story-Highlights",
+    desktopVersion: "Desktop-Version",
+    moreConcerts: "Mehr"
   },
   en: {
     navTrio: "Trio",
@@ -182,7 +186,11 @@ const translations = {
     footerLocation: "Berlin, Germany",
     footerCopyright: "© 2026 — All rights reserved",
     footerLegalNotice: "Legal Notice",
-    footerPrivacy: "Privacy Policy"
+    footerPrivacy: "Privacy Policy",
+    galleryHint: "Swipe for more, tap to enlarge.",
+    storyHighlights: "Story Highlights",
+    desktopVersion: "Desktop version",
+    moreConcerts: "More"
   },
   es: {
     navTrio: "Tr\u00edo",
@@ -192,7 +200,7 @@ const translations = {
     navMedia: "Media",
     navBooking: "Booking",
     navContact: "Contacto",
-    heroEyebrow: "Musica de camara desde Berlin",
+    heroEyebrow: "M\u00fasica de c\u00e1mara desde Berl\u00edn",
     heroTitle: "Cercania humana. Excelencia artistica.",
     heroCopy:
       "Synergia Piano Trio une una sonoridad de conjunto homogenea con una propuesta artistica clara y personal.",
@@ -274,7 +282,11 @@ const translations = {
     footerLocation: "Berl\u00edn, Alemania",
     footerCopyright: "© 2026 — Todos los derechos reservados",
     footerLegalNotice: "Aviso legal",
-    footerPrivacy: "Pol\u00edtica de privacidad"
+    footerPrivacy: "Pol\u00edtica de privacidad",
+    galleryHint: "Desliza para ver m\u00e1s, toca para ampliar.",
+    storyHighlights: "Historias destacadas",
+    desktopVersion: "Versi\u00f3n de escritorio",
+    moreConcerts: "M\u00e1s"
   }
 };
 
@@ -443,15 +455,38 @@ function renderConcertsLanding(lang) {
 function renderConcertsFull(lang) {
   const upcomingEl = document.getElementById("upcoming-list");
   if (!upcomingEl) return;
+  const foldWasOpen = upcomingEl.querySelector("details.more-concerts")?.open;
   upcomingEl.innerHTML = "";
   if (!concerts.upcoming.length) {
     const empty = document.createElement("article");
     empty.className = "panel";
     empty.textContent = translations[lang].noUpcoming;
     upcomingEl.appendChild(empty);
-  } else {
-    concerts.upcoming.forEach((event) => upcomingEl.appendChild(createCard(event, lang)));
+    return;
   }
+
+  const preview = page === "mobile.html" ? 2 : concerts.upcoming.length;
+  concerts.upcoming.slice(0, preview).forEach((event) => {
+    upcomingEl.appendChild(createCard(event, lang));
+  });
+
+  const rest = concerts.upcoming.slice(preview);
+  if (!rest.length) return;
+
+  const fold = document.createElement("details");
+  fold.className = "archive-year more-concerts";
+  if (foldWasOpen) fold.open = true;
+
+  const summary = document.createElement("summary");
+  summary.className = "archive-year-summary";
+  summary.textContent = translations[lang].moreConcerts;
+
+  const list = document.createElement("div");
+  list.className = "archive-year-list more-concerts-list";
+  rest.forEach((event) => list.appendChild(createCard(event, lang)));
+
+  fold.append(summary, list);
+  upcomingEl.appendChild(fold);
 }
 
 function setActiveNav() {
@@ -476,7 +511,7 @@ function applyLanguage(lang) {
   });
   if (page === "index.html" || page === "") {
     renderConcertsLanding(safeLang);
-  } else if (page === "termine.html") {
+  } else if (page === "termine.html" || page === "mobile.html") {
     renderConcertsFull(safeLang);
   }
   storeLanguage(safeLang);
@@ -490,7 +525,9 @@ function applyLanguage(lang) {
     "presse.html": "pressTitle",
     "rechtliches.html": "legalTitle",
     "datenschutz.html": "privacyTitle",
-    "impressum.html": "imprintTitle"
+    "impressum.html": "imprintTitle",
+    "mobile-trio.html": "navTrio",
+    "mobile-programs.html": "navRepertoire"
   }[page];
   const siteName = "Synergia Piano Trio";
   document.title = pageTitleKey && labels[pageTitleKey]
@@ -524,6 +561,11 @@ applyLanguage(initialLang);
   nav.addEventListener("click", (e) => {
     if (e.target.closest("a")) setOpen(false);
   });
+
+  const brandLink = document.querySelector(".brand a");
+  if (brandLink) {
+    brandLink.addEventListener("click", () => setOpen(false));
+  }
 
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") setOpen(false);
@@ -629,4 +671,133 @@ applyLanguage(initialLang);
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && lightbox.classList.contains('is-open')) closeLightbox();
   });
+}());
+
+// Instagram-style story highlights (Media)
+(function () {
+  var rail = document.querySelector("[data-stories]");
+  if (!rail) return;
+
+  var cards = Array.prototype.slice.call(rail.querySelectorAll(".story-card"));
+
+  function pauseCard(card) {
+    var video = card.querySelector("video");
+    if (!video) return;
+    video.pause();
+    card.classList.remove("is-playing");
+  }
+
+  function pauseOthers(except) {
+    cards.forEach(function (card) {
+      if (card !== except) pauseCard(card);
+    });
+  }
+
+  function showFirstFrame(video) {
+    video.muted = true;
+    var play = video.play();
+    if (!play) return;
+    play
+      .then(function () {
+        video.pause();
+        if (video.currentTime > 0.05) video.currentTime = 0;
+      })
+      .catch(function () {});
+  }
+
+  cards.forEach(function (card) {
+    var video = card.querySelector("video");
+    if (!video) return;
+
+    var framed = false;
+    video.addEventListener("loadeddata", function () {
+      if (framed || card.classList.contains("is-playing")) return;
+      framed = true;
+      showFirstFrame(video);
+    });
+
+    video.addEventListener("ended", function () {
+      video.currentTime = 0;
+      pauseCard(card);
+    });
+
+    card.addEventListener("click", function () {
+      if (video.paused) {
+        pauseOthers(card);
+        video.muted = false;
+        var play = video.play();
+        if (play) play.catch(function () {});
+        card.classList.add("is-playing");
+      } else {
+        pauseCard(card);
+      }
+    });
+  });
+
+  rail.addEventListener("scroll", function () {
+    var railBox = rail.getBoundingClientRect();
+    cards.forEach(function (card) {
+      if (!card.classList.contains("is-playing")) return;
+      var box = card.getBoundingClientRect();
+      var visible = Math.min(box.right, railBox.right) - Math.max(box.left, railBox.left);
+      if (visible < box.width * 0.4) pauseCard(card);
+    });
+  });
+
+  var drag = {
+    active: false,
+    moved: false,
+    pointerId: null,
+    startX: 0,
+    startScroll: 0
+  };
+  var skipClick = false;
+
+  rail.addEventListener("pointerdown", function (e) {
+    if (e.pointerType === "mouse" && e.button !== 0) return;
+    drag.active = true;
+    drag.moved = false;
+    drag.pointerId = e.pointerId;
+    drag.startX = e.clientX;
+    drag.startScroll = rail.scrollLeft;
+  });
+
+  rail.addEventListener("pointermove", function (e) {
+    if (!drag.active || e.pointerId !== drag.pointerId) return;
+    var dx = e.clientX - drag.startX;
+    if (!drag.moved) {
+      if (Math.abs(dx) < 8) return;
+      drag.moved = true;
+      rail.classList.add("is-dragging");
+      if (rail.setPointerCapture) rail.setPointerCapture(e.pointerId);
+    }
+    e.preventDefault();
+    rail.scrollLeft = drag.startScroll - dx;
+  });
+
+  function stopDrag(e) {
+    if (!drag.active) return;
+    if (e && drag.pointerId != null && e.pointerId !== drag.pointerId) return;
+    drag.active = false;
+    rail.classList.remove("is-dragging");
+    if (drag.moved) {
+      skipClick = true;
+      setTimeout(function () {
+        skipClick = false;
+      }, 0);
+    }
+  }
+
+  rail.addEventListener("pointerup", stopDrag);
+  rail.addEventListener("pointercancel", stopDrag);
+
+  rail.addEventListener(
+    "click",
+    function (e) {
+      if (!skipClick) return;
+      e.preventDefault();
+      e.stopPropagation();
+    },
+    true
+  );
 }());

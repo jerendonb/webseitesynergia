@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="assets/device-gate.js"></script>
     <title>Media · Synergia Piano Trio</title>
     <meta name="description" content="Videos, Audio und Bildmaterial des Synergia Piano Trio." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -29,6 +30,7 @@
         <div class="nav-item has-dropdown">
           <a href="media.html" data-i18n="navMedia">Media</a>
           <div class="nav-dropdown">
+            <a href="media.html#stories" data-i18n="storyHighlights">Story Highlights</a>
             <a href="media.html#video">Video</a>
             <a href="media.html#audio">Audio</a>
             <a href="media.html#photos" data-i18n="mediaPhotos">Photos</a>
@@ -55,6 +57,31 @@
     </header>
 
     <main>
+
+      <!-- Story Highlights -->
+      <section class="section" id="stories">
+        <div class="section-head split-head glass-panel">
+          <h2 data-i18n="storyHighlights">Story Highlights</h2>
+        </div>
+        <div class="story-rail" data-stories>
+          <button type="button" class="story-card" aria-label="Play story 1">
+            <video src="assets/stories/signal-2026-08-21-23-43-21-978_002.mp4" muted playsinline webkit-playsinline preload="auto"></video>
+            <span class="story-card-play" aria-hidden="true"></span>
+          </button>
+          <button type="button" class="story-card" aria-label="Play story 2">
+            <video src="assets/stories/signal-2026-08-21-23-43-21-978_004.mp4" muted playsinline webkit-playsinline preload="auto"></video>
+            <span class="story-card-play" aria-hidden="true"></span>
+          </button>
+          <button type="button" class="story-card" aria-label="Play story 3">
+            <video src="assets/stories/signal-2026-08-21-23-43-21-978_005.mp4" muted playsinline webkit-playsinline preload="auto"></video>
+            <span class="story-card-play" aria-hidden="true"></span>
+          </button>
+          <button type="button" class="story-card" aria-label="Play story 4">
+            <video src="assets/stories/signal-2026-08-21-23-43-21-978_006.mp4" muted playsinline webkit-playsinline preload="auto"></video>
+            <span class="story-card-play" aria-hidden="true"></span>
+          </button>
+        </div>
+      </section>
 
       <!-- Video -->
       <section class="section" id="video">
@@ -168,7 +195,7 @@
           <a href="index.html" data-i18n="footerHome">Home</a>
           <span><a href="trio.html" data-i18n="navTrio">Trio</a><span aria-hidden="true"> · </span><a href="trio.html#bio" data-i18n="navBio">Bio</a><span aria-hidden="true"> · </span><a href="trio.html#press" data-i18n="pressTitle">Press</a></span>
           <a href="termine.html" data-i18n="navConcerts">Concerts</a>
-          <span><a href="media.html" data-i18n="navMedia">Media</a><span aria-hidden="true"> · </span><a href="media.html#video">Video</a><span aria-hidden="true"> · </span><a href="media.html#audio">Audio</a><span aria-hidden="true"> · </span><a href="media.html#photos" data-i18n="mediaPhotos">Photos</a></span>
+          <span><a href="media.html" data-i18n="navMedia">Media</a><span aria-hidden="true"> · </span><a href="media.html#stories" data-i18n="storyHighlights">Story Highlights</a><span aria-hidden="true"> · </span><a href="media.html#video">Video</a><span aria-hidden="true"> · </span><a href="media.html#audio">Audio</a><span aria-hidden="true"> · </span><a href="media.html#photos" data-i18n="mediaPhotos">Photos</a></span>
           <span><a href="programme.html" data-i18n="navRepertoire">Programs</a><span aria-hidden="true"> · </span><a href="programme.html#repertoire" data-i18n="repertoireTitle">Repertoire</a></span>
           <a href="kontakt.html" data-i18n="navContact">Contact</a>
         </nav>
