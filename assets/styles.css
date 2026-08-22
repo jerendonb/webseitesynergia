@@ -170,10 +170,8 @@ body::before {
   width: 44px;
   height: 44px;
   padding: 0;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  border-radius: 999px;
-  background: rgba(18, 18, 18, 0.22);
-  backdrop-filter: blur(10px);
+  border: 0;
+  background: none;
   cursor: pointer;
 }
 
@@ -182,6 +180,7 @@ body::before {
   width: 20px;
   height: 1.5px;
   background: #fff;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.55);
   transition: transform 0.25s ease, opacity 0.2s ease;
 }
 
@@ -1096,6 +1095,52 @@ blockquote {
   color: #fff;
 }
 
+.lightbox__nav {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: rgba(255, 255, 255, 0.78);
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+.lightbox__nav::after {
+  content: "";
+  width: 12px;
+  height: 12px;
+  border-right: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+}
+
+.lightbox__nav--prev {
+  left: 1.2rem;
+}
+
+.lightbox__nav--prev::after {
+  transform: rotate(135deg);
+}
+
+.lightbox__nav--next {
+  right: 1.2rem;
+}
+
+.lightbox__nav--next::after {
+  transform: rotate(-45deg);
+}
+
+.lightbox__nav:hover,
+.lightbox__nav:focus-visible {
+  color: #fff;
+}
+
 .legal-grid {
   align-items: start;
 }
@@ -1231,6 +1276,7 @@ blockquote {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: inherit;
+  text-decoration: none;
   margin-bottom: 0;
 }
 

@@ -2,68 +2,85 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <script src="assets/device-gate.js"></script>
     <title>Privacy Policy · Synergia Piano Trio</title>
     <meta name="description" content="Datenschutzerklärung des Synergia Piano Trio." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="assets/styles.css" />
+    <link rel="stylesheet" href="assets/mobile.css" />
+    <script>
+      document.documentElement.classList.add("js");
+    </script>
   </head>
-  <body>
-    <div id="page-veil" aria-hidden="true"></div>
-    <div class="ambient ambient-a" aria-hidden="true"></div>
-    <div class="ambient ambient-b" aria-hidden="true"></div>
-
+  <body class="m-sub" id="top">
+    <div class="m-bg" aria-hidden="true"></div>
     <header class="site-header">
-      <a class="brand" href="index.html">Synergia Piano Trio</a>
-      <nav class="main-nav" aria-label="Hauptnavigation">
-        <div class="nav-item has-dropdown">
-          <a href="trio.html" data-i18n="navTrio">Trio</a>
-          <div class="nav-dropdown">
-            <a href="trio.html#bio" data-i18n="navBio">Bio</a>
-            <a href="trio.html#press" data-i18n="pressTitle">Press</a>
-          </div>
-        </div>
-        <a href="termine.html" data-i18n="navConcerts">Concerts</a>
-        <div class="nav-item has-dropdown">
-          <a href="media.html" data-i18n="navMedia">Media</a>
-          <div class="nav-dropdown">
-            <a href="media.html#stories" data-i18n="storyHighlights">Story Highlights</a>
-            <a href="media.html#video">Video</a>
-            <a href="media.html#audio">Audio</a>
-            <a href="media.html#photos" data-i18n="mediaPhotos">Photos</a>
-          </div>
-        </div>
-        <div class="nav-item has-dropdown">
-          <a href="programme.html" data-i18n="navRepertoire">Programs</a>
-          <div class="nav-dropdown">
-            <a href="programme.html#repertoire" data-i18n="repertoireTitle">Repertoire</a>
-          </div>
-        </div>
-        <a href="kontakt.html" data-i18n="navContact">Contact</a>
-      </nav>
-      <div class="header-right">
-        <div class="lang-switch" aria-label="Sprachauswahl">
-          <button class="lang-btn" data-lang="de">DE</button>
-          <button class="lang-btn is-active" data-lang="en">EN</button>
-          <button class="lang-btn" data-lang="es">ES</button>
-        </div>
-        <a class="instagram-link" href="https://www.instagram.com/synergia_piano_trio/" target="_blank" rel="noopener" aria-label="Instagram">
-          <img src="assets/Instagram_Glyph_Black.png" alt="Instagram" class="instagram-icon" />
-        </a>
-      </div>
+      <p class="brand"><a href="mobile.html#top">Synergia Piano Trio</a></p>
     </header>
 
-    <main>
-      <section class="section">
-        <article class="panel prose imprint-panel">
-          <h2 data-i18n="privacyTitle">Datenschutz</h2>
+    <div class="header-right">
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-label="Menu"
+        aria-expanded="false"
+        aria-controls="home-nav"
+      >
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+      <a class="instagram-link" href="https://www.instagram.com/synergia_piano_trio/" target="_blank" rel="noopener" aria-label="Instagram">
+        <img src="assets/mobile/instagram-white.png" alt="Instagram" class="instagram-icon" width="30" height="30" />
+      </a>
+      <div class="lang-switch" aria-label="Language">
+        <button class="lang-btn" data-lang="de" type="button">DE</button>
+        <button class="lang-btn is-active" data-lang="en" type="button">EN</button>
+        <button class="lang-btn" data-lang="es" type="button">ES</button>
+      </div>
+    </div>
 
+    <nav id="home-nav" class="home-nav" aria-label="Menu">
+      <a class="brand home-nav-brand" href="mobile.html#top">Synergia Piano Trio</a>
+      <div class="home-nav-item">
+        <div class="home-nav-subs">
+          <a href="mobile-trio.html#bio" data-i18n="navBio">Bio</a>
+          <a href="mobile-trio.html#press" data-i18n="pressTitle">Press</a>
+        </div>
+        <a href="mobile-trio.html" data-i18n="navTrio">Trio</a>
+      </div>
+      <a href="mobile.html#concerts" data-i18n="navConcerts">Concerts</a>
+      <div class="home-nav-item">
+        <div class="home-nav-subs home-nav-subs--media">
+          <span class="home-nav-subrow">
+            <a href="mobile.html#stories" data-i18n="storyHighlights">Story Highlights</a>
+            <a href="mobile.html#video">Video</a>
+          </span>
+          <span class="home-nav-subrow">
+            <a href="mobile.html#audio">Audio</a>
+            <a href="mobile.html#photos" data-i18n="mediaPhotos">Photos</a>
+          </span>
+        </div>
+        <a href="mobile.html#media" data-i18n="navMedia">Media</a>
+      </div>
+      <div class="home-nav-item">
+        <div class="home-nav-subs">
+          <a href="mobile-programs.html#repertoire" data-i18n="repertoireTitle">Repertoire</a>
+        </div>
+        <a href="mobile-programs.html" data-i18n="navRepertoire">Programs</a>
+      </div>
+      <a href="mobile.html#contact" data-i18n="navContact">Contact</a>
+    </nav>
+
+    <main>
+      <section class="m-section m-reveal" id="privacy">
+        <h2 class="m-section-title" data-i18n="privacyTitle">Privacy Policy</h2>
+        <div class="m-panel">
           <div data-lang-block="de">
             <h3>1. Verantwortlicher</h3>
-            <p>Juan-Esteban Rendón<br />Roelckestraße 155, 13086 Berlin<br />E-Mail: contact@synergiapianotrio.com</p>
+            <p>Juan-Esteban Rendón<br>Roelckestraße 155, 13086 Berlin<br>E-Mail: <a href="mailto:contact@synergiapianotrio.com">contact@synergiapianotrio.com</a></p>
 
             <h3>2. Hosting</h3>
             <p>Diese Website wird über GitHub Pages gehostet. Beim Aufruf der Website werden automatisch Server-Log-Daten erfasst (IP-Adresse, Datum/Uhrzeit, Browsertyp, aufgerufene Seite). Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an technisch fehlerfreier Bereitstellung).</p>
@@ -85,7 +102,7 @@
             <p>Jede betroffene Person hat das Recht auf Auskunft (Art. 15 DSGVO), Berichtigung (Art. 16), Löschung (Art. 17), Einschränkung der Verarbeitung (Art. 18), Datenübertragbarkeit (Art. 20) sowie Widerspruch (Art. 21).</p>
 
             <h3>8. Beschwerderecht</h3>
-            <p>Betroffene haben das Recht, sich bei einer Datenschutz-Aufsichtsbehörde zu beschweren — zuständig für Berlin:<br />Berliner Beauftragte für Datenschutz und Informationsfreiheit, Friedrichstr. 219, 10969 Berlin</p>
+            <p>Betroffene haben das Recht, sich bei einer Datenschutz-Aufsichtsbehörde zu beschweren — zuständig für Berlin:<br>Berliner Beauftragte für Datenschutz und Informationsfreiheit, Friedrichstr. 219, 10969 Berlin</p>
 
             <h3>9. SSL-Verschlüsselung</h3>
             <p>Diese Website nutzt aus Sicherheitsgründen eine SSL/TLS-Verschlüsselung (erkennbar am „https://" in der Adresszeile).</p>
@@ -93,7 +110,7 @@
 
           <div data-lang-block="en" hidden>
             <h3>1. Controller</h3>
-            <p>Juan-Esteban Rendón<br />Roelckestraße 155, 13086 Berlin, Germany<br />Email: contact@synergiapianotrio.com</p>
+            <p>Juan-Esteban Rendón<br>Roelckestraße 155, 13086 Berlin, Germany<br>Email: <a href="mailto:contact@synergiapianotrio.com">contact@synergiapianotrio.com</a></p>
 
             <h3>2. Hosting</h3>
             <p>This website is hosted via GitHub Pages. When visiting the site, server log data is automatically collected (IP address, date/time, browser type, page requested). Legal basis: Art. 6(1)(f) GDPR (legitimate interest in technically error-free provision of the website).</p>
@@ -115,7 +132,7 @@
             <p>Every data subject has the right to access (Art. 15 GDPR), rectification (Art. 16), erasure (Art. 17), restriction of processing (Art. 18), data portability (Art. 20), and objection (Art. 21).</p>
 
             <h3>8. Right to Lodge a Complaint</h3>
-            <p>Data subjects have the right to lodge a complaint with a data protection supervisory authority — for Berlin:<br />Berlin Commissioner for Data Protection and Freedom of Information, Friedrichstr. 219, 10969 Berlin</p>
+            <p>Data subjects have the right to lodge a complaint with a data protection supervisory authority — for Berlin:<br>Berlin Commissioner for Data Protection and Freedom of Information, Friedrichstr. 219, 10969 Berlin</p>
 
             <h3>9. SSL Encryption</h3>
             <p>For security reasons, this website uses SSL/TLS encryption (indicated by "https://" in the address bar).</p>
@@ -123,7 +140,7 @@
 
           <div data-lang-block="es" hidden>
             <h3>1. Responsable</h3>
-            <p>Juan-Esteban Rendón<br />Roelckestraße 155, 13086 Berlín, Alemania<br />Correo: contact@synergiapianotrio.com</p>
+            <p>Juan-Esteban Rendón<br>Roelckestraße 155, 13086 Berlín, Alemania<br>Correo: <a href="mailto:contact@synergiapianotrio.com">contact@synergiapianotrio.com</a></p>
 
             <h3>2. Alojamiento (Hosting)</h3>
             <p>Este sitio web está alojado a través de GitHub Pages. Al visitar el sitio, se recopilan automáticamente datos de registro del servidor (dirección IP, fecha/hora, tipo de navegador, página solicitada). Base legal: art. 6.1.f RGPD (interés legítimo en la provisión técnicamente correcta del sitio web).</p>
@@ -145,45 +162,32 @@
             <p>Toda persona interesada tiene derecho de acceso (art. 15 RGPD), rectificación (art. 16), supresión (art. 17), limitación del tratamiento (art. 18), portabilidad de los datos (art. 20) y oposición (art. 21).</p>
 
             <h3>8. Derecho a presentar una reclamación</h3>
-            <p>Las personas interesadas tienen derecho a presentar una reclamación ante una autoridad de control en materia de protección de datos — para Berlín:<br />Berliner Beauftragte für Datenschutz und Informationsfreiheit, Friedrichstr. 219, 10969 Berlín</p>
+            <p>Las personas interesadas tienen derecho a presentar una reclamación ante una autoridad de control en materia de protección de datos — para Berlín:<br>Berliner Beauftragte für Datenschutz und Informationsfreiheit, Friedrichstr. 219, 10969 Berlín</p>
 
             <h3>9. Cifrado SSL</h3>
             <p>Por razones de seguridad, este sitio web utiliza cifrado SSL/TLS (indicado por "https://" en la barra de direcciones).</p>
           </div>
-
-        </article>
+        </div>
       </section>
     </main>
 
-    <footer class="site-footer">
-      <div class="footer-grid">
-        <div class="footer-col">
-          <a class="footer-brand" href="index.html">Synergia Piano Trio</a>
-          <a href="mailto:contact@synergiapianotrio.com">contact@synergiapianotrio.com</a>
-          <span class="footer-social"><a href="https://www.instagram.com/synergia_piano_trio/" target="_blank" rel="noopener">Instagram</a><span aria-hidden="true"> · </span><a href="https://www.youtube.com/@SynergiaPianoTrio" target="_blank" rel="noopener">YouTube</a><span aria-hidden="true"> · </span><a href="https://soundcloud.com/synergia-piano-trio" target="_blank" rel="noopener">SoundCloud</a></span>
-          <span data-i18n="footerLocation">Berlin, Germany</span>
-          <span data-i18n="footerCopyright">© 2026 — All rights reserved</span>
-        </div>
-        <nav class="footer-col footer-col--center" aria-label="Sitemap">
-          <a href="index.html" data-i18n="footerHome">Home</a>
-          <span><a href="trio.html" data-i18n="navTrio">Trio</a><span aria-hidden="true"> · </span><a href="trio.html#bio" data-i18n="navBio">Bio</a><span aria-hidden="true"> · </span><a href="trio.html#press" data-i18n="pressTitle">Press</a></span>
-          <a href="termine.html" data-i18n="navConcerts">Concerts</a>
-          <span><a href="media.html" data-i18n="navMedia">Media</a><span aria-hidden="true"> · </span><a href="media.html#stories" data-i18n="storyHighlights">Story Highlights</a><span aria-hidden="true"> · </span><a href="media.html#video">Video</a><span aria-hidden="true"> · </span><a href="media.html#audio">Audio</a><span aria-hidden="true"> · </span><a href="media.html#photos" data-i18n="mediaPhotos">Photos</a></span>
-          <span><a href="programme.html" data-i18n="navRepertoire">Programs</a><span aria-hidden="true"> · </span><a href="programme.html#repertoire" data-i18n="repertoireTitle">Repertoire</a></span>
-          <a href="kontakt.html" data-i18n="navContact">Contact</a>
-        </nav>
-        <div class="footer-col footer-col--right">
-          <div class="lang-switch footer-lang" aria-label="Language">
-            <button class="lang-btn" data-lang="de">DE</button>
-            <button class="lang-btn is-active" data-lang="en">EN</button>
-            <button class="lang-btn" data-lang="es">ES</button>
-          </div>
-          <a href="impressum.html" data-i18n="footerLegalNotice">Legal Notice</a>
-          <a href="datenschutz.html" data-i18n="footerPrivacy">Privacy Policy</a>
-        </div>
+    <footer class="m-footer">
+      <a class="m-footer-brand" href="mobile.html">Synergia Piano Trio</a>
+      <p class="m-footer-row m-footer-social">
+        <a href="https://www.instagram.com/synergia_piano_trio/" target="_blank" rel="noopener">Instagram</a><span aria-hidden="true"> · </span><a href="https://www.youtube.com/@SynergiaPianoTrio" target="_blank" rel="noopener">YouTube</a><span aria-hidden="true"> · </span><a href="https://soundcloud.com/synergia-piano-trio" target="_blank" rel="noopener">SoundCloud</a>
+      </p>
+      <div class="lang-switch" aria-label="Language">
+        <button class="lang-btn" data-lang="de" type="button">DE</button>
+        <button class="lang-btn is-active" data-lang="en" type="button">EN</button>
+        <button class="lang-btn" data-lang="es" type="button">ES</button>
       </div>
+      <nav class="m-footer-legal" aria-label="Legal">
+        <a href="mobile-impressum.html" data-i18n="footerLegalNotice">Legal Notice</a>
+        <a href="mobile-datenschutz.html" data-i18n="footerPrivacy">Privacy Policy</a>
+      </nav>
     </footer>
 
     <script src="assets/script.js"></script>
+    <script src="assets/mobile.js"></script>
   </body>
 </html>

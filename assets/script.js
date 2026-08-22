@@ -91,7 +91,6 @@ const translations = {
     footerCopyright: "© 2026 — Alle Rechte vorbehalten",
     footerLegalNotice: "Impressum",
     footerPrivacy: "Datenschutz",
-    galleryHint: "Wischen für mehr, tippen zum Vergrößern.",
     storyHighlights: "Story-Highlights",
     desktopVersion: "Desktop-Version",
     moreConcerts: "Mehr"
@@ -187,7 +186,6 @@ const translations = {
     footerCopyright: "© 2026 — All rights reserved",
     footerLegalNotice: "Legal Notice",
     footerPrivacy: "Privacy Policy",
-    galleryHint: "Swipe for more, tap to enlarge.",
     storyHighlights: "Story Highlights",
     desktopVersion: "Desktop version",
     moreConcerts: "More"
@@ -283,7 +281,6 @@ const translations = {
     footerCopyright: "© 2026 — Todos los derechos reservados",
     footerLegalNotice: "Aviso legal",
     footerPrivacy: "Pol\u00edtica de privacidad",
-    galleryHint: "Desliza para ver m\u00e1s, toca para ampliar.",
     storyHighlights: "Historias destacadas",
     desktopVersion: "Versi\u00f3n de escritorio",
     moreConcerts: "M\u00e1s"
@@ -527,7 +524,9 @@ function applyLanguage(lang) {
     "datenschutz.html": "privacyTitle",
     "impressum.html": "imprintTitle",
     "mobile-trio.html": "navTrio",
-    "mobile-programs.html": "navRepertoire"
+    "mobile-programs.html": "navRepertoire",
+    "mobile-impressum.html": "imprintTitle",
+    "mobile-datenschutz.html": "privacyTitle"
   }[page];
   const siteName = "Synergia Piano Trio";
   document.title = pageTitleKey && labels[pageTitleKey]
@@ -632,14 +631,26 @@ applyLanguage(initialLang);
   var lightbox = document.getElementById('lightbox');
   if (!lightbox) return;
 
+  var items = Array.prototype.slice.call(document.querySelectorAll('[data-lightbox]'));
   var lbImg = lightbox.querySelector('.lightbox__img');
   var lbWatermark = lightbox.querySelector('.lightbox__watermark');
   var lbClose = lightbox.querySelector('.lightbox__close');
+  var lbPrev = lightbox.querySelector('.lightbox__nav--prev');
+  var lbNext = lightbox.querySelector('.lightbox__nav--next');
+  var index = 0;
 
-  function openLightbox(src, alt, watermark) {
-    lbImg.src = src;
-    lbImg.alt = alt;
-    lbWatermark.textContent = watermark || '';
+  function showAt(i) {
+    if (!items.length) return;
+    index = (i + items.length) % items.length;
+    var item = items[index];
+    var img = item.querySelector('img');
+    lbImg.src = img.src;
+    lbImg.alt = img.alt;
+    lbWatermark.textContent = item.dataset.watermark || '';
+  }
+
+  function openLightbox(i) {
+    showAt(i);
     lightbox.classList.add('is-open');
     document.body.style.overflow = 'hidden';
     lbClose.focus();
@@ -651,10 +662,9 @@ applyLanguage(initialLang);
     lbImg.src = '';
   }
 
-  document.querySelectorAll('[data-lightbox]').forEach(function (item) {
+  items.forEach(function (item, i) {
     function trigger() {
-      var img = item.querySelector('img');
-      openLightbox(img.src, img.alt, item.dataset.watermark);
+      openLightbox(i);
     }
     item.addEventListener('click', trigger);
     item.addEventListener('keydown', function (e) {
@@ -663,13 +673,58 @@ applyLanguage(initialLang);
   });
 
   lbClose.addEventListener('click', closeLightbox);
+  if (lbPrev) {
+    lbPrev.addEventListener('click', function (e) {
+      e.stopPropagation();
+      showAt(index - 1);
+    });
+  }
+  if (lbNext) {
+    lbNext.addEventListener('click', function (e) {
+      e.stopPropagation();
+      showAt(index + 1);
+    });
+  }
 
   lightbox.addEventListener('click', function (e) {
+    if (swipe.moved) {
+      swipe.moved = false;
+      return;
+    }
     if (e.target === lightbox) closeLightbox();
   });
 
+  var swipe = { active: false, x: 0, y: 0, moved: false };
+
+  lightbox.addEventListener('pointerdown', function (e) {
+    if (e.pointerType === 'mouse') return;
+    if (e.target.closest('.lightbox__close')) return;
+    swipe.active = true;
+    swipe.moved = false;
+    swipe.x = e.clientX;
+    swipe.y = e.clientY;
+  });
+
+  lightbox.addEventListener('pointerup', function (e) {
+    if (!swipe.active) return;
+    swipe.active = false;
+    var dx = e.clientX - swipe.x;
+    var dy = e.clientY - swipe.y;
+    if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy)) return;
+    swipe.moved = true;
+    if (dx < 0) showAt(index + 1);
+    else showAt(index - 1);
+  });
+
+  lightbox.addEventListener('pointercancel', function () {
+    swipe.active = false;
+  });
+
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && lightbox.classList.contains('is-open')) closeLightbox();
+    if (!lightbox.classList.contains('is-open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') showAt(index - 1);
+    if (e.key === 'ArrowRight') showAt(index + 1);
   });
 }());
 

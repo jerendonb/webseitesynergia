@@ -31,6 +31,11 @@ html {
   -webkit-text-size-adjust: 100%;
   /* Anchor jumps have to clear the fixed burger. */
   scroll-padding-top: calc(var(--safe-top) + 4.5rem);
+  /* clip rather than hidden: iOS treats overflow-x: hidden on body as a
+     containing block, so position:fixed backgrounds scroll with the page. */
+  overflow-x: hidden;
+  overflow-x: clip;
+  background-color: var(--bg);
 }
 
 body {
@@ -41,19 +46,21 @@ body {
   font-size: 1.05rem;
   line-height: 1.6;
   color: var(--ink);
-  background: var(--bg);
-  overflow-x: hidden;
+  background: transparent;
 }
 
-/* Same subpage photo as the desktop site, unfiltered. `left top` keeps the
-   left edge of the picture on the left edge of the phone; `cover` fills the
-   rest by cropping the right. The layer is fixed rather than
-   background-attachment: fixed, which made Chrome skip bar repaints. */
-body::before {
-  content: "";
+/* Same subpage photo as the desktop site, unfiltered. A real fixed layer
+   (not background-attachment: fixed, which iOS ignores / Chrome skipped
+   painting on the footer). 100dvh tracks the visible phone screen, including
+   the collapsing address bar. */
+.m-bg {
   position: fixed;
-  inset: 0;
-  z-index: -2;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  height: 100dvh;
+  z-index: -1;
   /* A small pan off the left-aligned close-up: the next column in the
      picture comes into view, and the musicians on the right stay off-screen. */
   background: url("Synergia_Piano_Trio-46(cropped).png") 20% top / cover no-repeat;
@@ -93,6 +100,26 @@ img {
     ),
     url("mobile/hero.jpg") center center / cover no-repeat,
     #000;
+}
+
+/* Landscape: use the full-width original, cropped so the three faces sit on
+   the horizontal midline and the pianist stays on the vertical centre. cover
+   then trims the stone pillars left and right — there is enough of them that
+   all three heads stay in frame. */
+@media (orientation: landscape) {
+  .m-hero {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.42) 0%,
+        rgba(0, 0, 0, 0.14) 32%,
+        rgba(0, 0, 0, 0.5) 64%,
+        #000 88%,
+        #000 100%
+      ),
+      url("mobile/hero-landscape.jpg") center center / cover no-repeat,
+      #000;
+  }
 }
 
 .m-hero::after {
@@ -219,11 +246,8 @@ body.nav-open .site-header {
   width: 44px;
   height: 44px;
   padding: 0;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  border-radius: 999px;
-  background: rgba(18, 18, 18, 0.22);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  border: 0;
+  background: none;
   cursor: pointer;
 }
 
@@ -232,6 +256,7 @@ body.nav-open .site-header {
   width: 20px;
   height: 1.5px;
   background: #fff;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.55);
   transition: transform 0.25s ease, opacity 0.2s ease;
 }
 
@@ -536,6 +561,27 @@ body.m-sub main {
 
 .m-panel p:last-child {
   margin-bottom: 0;
+}
+
+.m-panel h3 {
+  margin: 1.35rem 0 0.45rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.m-panel h3:first-of-type {
+  margin-top: 0;
+}
+
+.m-panel .small {
+  margin-bottom: 0.7rem;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+.m-panel a {
+  color: inherit;
 }
 
 .trio-members {
@@ -906,13 +952,6 @@ button.m-video {
   pointer-events: none;
 }
 
-.m-gallery-hint {
-  margin: 0.7rem 0 0;
-  font-size: 0.88rem;
-  font-style: italic;
-  color: var(--muted);
-}
-
 /* ── Programmes & repertoire ────────────────────────────────────────────── */
 
 .m-details {
@@ -1065,6 +1104,7 @@ button.m-video {
   align-items: center;
   justify-content: center;
   background: rgba(0, 0, 0, 0.94);
+  touch-action: pan-y;
 }
 
 .lightbox.is-open {
@@ -1113,6 +1153,10 @@ button.m-video {
   cursor: pointer;
 }
 
+.lightbox__nav {
+  display: none;
+}
+
 /* ── Scroll reveal ──────────────────────────────────────────────────────── */
 
 /* Scoped to .js so a scripting failure leaves the content visible rather than
@@ -1145,9 +1189,55 @@ button.m-video {
   }
 }
 
-/* Opened on a desktop browser (a shared link, or the escape hatch): hold the
-   layout to a phone-sized column instead of stretching it across the window. */
-@media (min-width: 720px) {
+/* Landscape: content column flush to the vertical centre of the screen.
+   This block has to come after .m-section / .m-footer so their padding
+   shorthand does not put the gap back. */
+@media (orientation: landscape) {
+  main {
+    width: 50vw;
+    max-width: none;
+    align-self: flex-start;
+    box-sizing: border-box;
+  }
+
+  .m-section {
+    padding: clamp(1.2rem, 6vh, 2.2rem) 0 clamp(1.2rem, 6vh, 2.2rem) 1.1rem;
+  }
+
+  .m-gallery {
+    margin-inline: 0;
+  }
+
+  /* Portrait sizes the 9:16 cards by width (78% of the column). That is
+     taller than a landscape phone, so size them by height instead: a
+     little under the screen, not counting the Story Highlights title. */
+  .story-rail {
+    --story-h: calc(100vh - 1.35rem);
+    --story-h: calc(100svh - 1.35rem);
+    --story-w: calc(var(--story-h) * 9 / 16);
+  }
+
+  .story-card {
+    flex: 0 0 var(--story-w);
+    width: var(--story-w);
+    height: var(--story-h);
+    aspect-ratio: auto;
+  }
+
+  .story-card-play {
+    width: 44px;
+    height: 44px;
+  }
+
+  .story-card-play::after {
+    border-width: 8px 0 8px 13px;
+  }
+}
+
+/* Opened on a desktop browser (a shared link): hold the layout to a
+   phone-sized column. min-height keeps a landscape phone from being squeezed
+   into that column — it needs the full width so the hero can show the trio. */
+@media (min-width: 720px) and (min-height: 700px) {
   body {
     max-width: 480px;
     margin-inline: auto;

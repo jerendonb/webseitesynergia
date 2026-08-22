@@ -24,7 +24,9 @@
     var mobileHome = {
       "mobile.html": "index.html",
       "mobile-trio.html": "trio.html",
-      "mobile-programs.html": "programme.html"
+      "mobile-programs.html": "programme.html",
+      "mobile-impressum.html": "impressum.html",
+      "mobile-datenschutz.html": "datenschutz.html"
     };
 
     var desktopHome = {
@@ -34,7 +36,9 @@
       "termine.html": "mobile.html#concerts",
       "media.html": "mobile.html#media",
       "kontakt.html": "mobile.html#contact",
-      "presse.html": "mobile-trio.html#press"
+      "presse.html": "mobile-trio.html#press",
+      "impressum.html": "mobile-impressum.html",
+      "datenschutz.html": "mobile-datenschutz.html"
     };
 
     if (mobileHome[page]) {

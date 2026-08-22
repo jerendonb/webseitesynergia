@@ -16,6 +16,7 @@
     </script>
   </head>
   <body>
+    <div class="m-bg" aria-hidden="true"></div>
     <header class="site-header">
       <h1 class="brand"><a href="#top">Synergia Piano Trio</a></h1>
     </header>
@@ -165,7 +166,6 @@
             <span class="photo-watermark">© Juan Carlos Bautista</span>
           </figure>
         </div>
-        <p class="m-gallery-hint" data-i18n="galleryHint">Swipe for more, tap to enlarge.</p>
       </section>
 
       <!-- Contact -->
@@ -179,7 +179,7 @@
     </main>
 
     <footer class="m-footer">
-      <strong class="m-footer-brand">Synergia Piano Trio</strong>
+      <a class="m-footer-brand" href="mobile.html">Synergia Piano Trio</a>
       <p class="m-footer-row m-footer-social">
         <a href="https://www.instagram.com/synergia_piano_trio/" target="_blank" rel="noopener">Instagram</a><span aria-hidden="true"> · </span><a href="https://www.youtube.com/@SynergiaPianoTrio" target="_blank" rel="noopener">YouTube</a><span aria-hidden="true"> · </span><a href="https://soundcloud.com/synergia-piano-trio" target="_blank" rel="noopener">SoundCloud</a>
       </p>
@@ -189,17 +189,19 @@
         <button class="lang-btn" data-lang="es" type="button">ES</button>
       </div>
       <nav class="m-footer-legal" aria-label="Legal">
-        <a href="impressum.html" data-i18n="footerLegalNotice">Legal Notice</a>
-        <a href="datenschutz.html" data-i18n="footerPrivacy">Privacy Policy</a>
+        <a href="mobile-impressum.html" data-i18n="footerLegalNotice">Legal Notice</a>
+        <a href="mobile-datenschutz.html" data-i18n="footerPrivacy">Privacy Policy</a>
       </nav>
     </footer>
 
     <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Photo fullscreen view">
+      <button type="button" class="lightbox__nav lightbox__nav--prev" aria-label="Previous photo"></button>
       <div class="lightbox__inner">
         <button class="lightbox__close" aria-label="Close">&times;</button>
         <img class="lightbox__img" src="" alt="" />
         <span class="lightbox__watermark"></span>
       </div>
+      <button type="button" class="lightbox__nav lightbox__nav--next" aria-label="Next photo"></button>
     </div>
 
     <script src="assets/script.js"></script>
