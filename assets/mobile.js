@@ -52,4 +52,37 @@
       el.classList.add("is-in");
     });
   }
+
+  /* ── Scroll lives on .m-page, not the document. Hash links need a hand. ─ */
+
+  var page = document.querySelector(".m-page");
+
+  function scrollToId(id) {
+    if (!id) return;
+    if (id === "top") {
+      if (page) page.scrollTo({ top: 0, behavior: "smooth" });
+      else window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+    var el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest('a[href^="#"]');
+    if (!a) return;
+    var href = a.getAttribute("href");
+    if (!href || href.length < 2) return;
+    var id = href.slice(1);
+    if (id !== "top" && !document.getElementById(id)) return;
+    e.preventDefault();
+    scrollToId(id);
+  });
+
+  if (location.hash) {
+    var startId = location.hash.slice(1);
+    requestAnimationFrame(function () {
+      scrollToId(startId);
+    });
+  }
 }());

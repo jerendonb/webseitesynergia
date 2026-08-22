@@ -653,12 +653,16 @@ applyLanguage(initialLang);
     showAt(i);
     lightbox.classList.add('is-open');
     document.body.style.overflow = 'hidden';
+    var page = document.querySelector('.m-page');
+    if (page) page.style.overflow = 'hidden';
     lbClose.focus();
   }
 
   function closeLightbox() {
     lightbox.classList.remove('is-open');
     document.body.style.overflow = '';
+    var page = document.querySelector('.m-page');
+    if (page) page.style.overflow = '';
     lbImg.src = '';
   }
 
