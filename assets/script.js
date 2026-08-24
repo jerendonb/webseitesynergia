@@ -118,7 +118,7 @@ const translations = {
     archiveTitle: "Highlights",
     archiveLead: "Past concerts remain visible permanently.",
     noUpcoming: "New concert dates will be announced soon.",
-    composersPrefix: "Works from ",
+    composersPrefix: "Works by ",
     ticketLabel: "Tickets",
     ticketsSoon: "Available soon",
     tidalBtn: "Listen on Tidal",
