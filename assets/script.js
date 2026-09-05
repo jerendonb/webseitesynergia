@@ -302,7 +302,7 @@ const concerts = {
       venue: "Konzerthaus Berlin",
       composers: "Debussy, Turina, Piazzolla, Ravel",
       ticketUrl:
-        "https://www.classictic.com/en/city/berlin-t10/piazzollas-four-seasons-festive-new-years-eve-concert-at-konzerthaus-berlin/117686/?amount=1&category=740351"
+        "https://www.konzerthaus.de/de/programm/festliches-konzert-zum-jahreswechsel/13475"
     },
     {
       date: "2027-09-04",
