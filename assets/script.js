@@ -294,7 +294,8 @@ const concerts = {
       city: "Berlin",
       venue: "Kapelle am Urban",
       composers: "Liszt, Debussy, Schumann",
-      ticketUrl: "#"
+      ticketUrl:
+        "https://www.eventim-light.com/de/a/6911fd70ac6f162b519348d3/e/6acbd1a3a47cb7abb7b218b2?lang=de"
     },
     {
       date: "2026-12-30",
