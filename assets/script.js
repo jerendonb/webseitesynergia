@@ -291,6 +291,7 @@ const concerts = {
   upcoming: [
     {
       date: "2026-11-01",
+      time: "16:00",
       city: "Berlin",
       venue: "Kapelle am Urban",
       composers: "Liszt, Debussy, Schumann",
@@ -299,6 +300,7 @@ const concerts = {
     },
     {
       date: "2026-12-30",
+      time: "20:00",
       city: "Berlin",
       venue: "Konzerthaus Berlin",
       composers: "Debussy, Turina, Piazzolla, Ravel",
@@ -380,6 +382,25 @@ function formatDate(value, lang) {
   return value;
 }
 
+function formatTime(value, lang) {
+  const match = /^(\d{1,2}):(\d{2})$/.exec(value);
+  if (!match) return value;
+
+  const hours = Number(match[1]);
+  const minutes = match[2];
+
+  if (lang === "de") {
+    return minutes === "00" ? `${hours} Uhr` : `${hours}:${minutes} Uhr`;
+  }
+
+  const hours12 = hours % 12 === 0 ? 12 : hours % 12;
+  const suffix = hours < 12 ? "a.m." : "p.m.";
+  if (lang === "es") {
+    return `${hours12}:${minutes} ${suffix.replace(".m.", ". m.")}`;
+  }
+  return `${hours12}:${minutes} ${suffix}`;
+}
+
 function createCard(concert, lang, showTicket = true) {
   const labels = translations[lang] || translations.de;
   const card = document.createElement("article");
@@ -393,7 +414,7 @@ function createCard(concert, lang, showTicket = true) {
 
   const dateTime = document.createElement("p");
   const formattedDate = formatDate(concert.date, lang);
-  dateTime.textContent = concert.time ? `${formattedDate} · ${concert.time}` : formattedDate;
+  dateTime.textContent = concert.time ? `${formattedDate} · ${formatTime(concert.time, lang)}` : formattedDate;
 
   const city = document.createElement("p");
   const cityName = (lang === "es" && concert.city === "Berlin") ? "Berl\u00edn" : concert.city;
